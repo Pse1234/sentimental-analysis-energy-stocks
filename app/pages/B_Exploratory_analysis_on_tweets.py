@@ -24,7 +24,7 @@ TWEETS_PATH = [
 st.set_page_config(
     page_title="Tweets analysis for stocks", page_icon=":bar_chart:", layout="wide"
 )
-st.title("Tweets analysis for stocks 📈📉")
+st.title("Tweets exploratory data analysis 🐦")
 
 
 @st.cache
