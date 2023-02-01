@@ -35,7 +35,7 @@ stock_list = [
     "newmont",
 ]
 for i, stock in enumerate(stock_list):
-    logo_path = f"images/{stock}-logo.png"
+    logo_path = f"./images/{stock}-logo.png"
     if i == 0:
         c1.image(Image.open(logo_path))
     elif i == 1:
