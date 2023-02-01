@@ -110,7 +110,7 @@ mask = condition1 & condition2
 filtered_tweets = tweets.loc[mask, :]
 
 # Initialiser la variable des mots vides
-stop_words = set(stopwords.words("english"))
+stop_words = stopwords.words("english")
 
 # Create a function to check if a word starts with a number
 def starts_with_number(word):
