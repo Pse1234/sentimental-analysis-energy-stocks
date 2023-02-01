@@ -13,9 +13,9 @@ import numpy as np
 DATE_COLUMN = "DATE"
 DATA_PATH = "./../data/stocks_data.xlsx"
 TWEETS_PATH = [
-    "./../data_cleaned/webscraped_FMC_CORP.csv/part-00000-9fe4bf5d-f913-4d0c-a98a-8f1d088639ee-c000.csv",
-    "./../data_cleaned/webscraped_WEYERHAEUSER_CO.csv/part-00000-17a4305d-9672-4ddf-87fc-d180dcf01612-c000.csv",
-    "./../data_cleaned/webscraped_BP_PLC.csv/part-00000-60047cdf-7f10-49f8-932e-065bb69f747c-c000.csv",
+    "./../../data/data_cleaned/webscraped_BP_PLC/part-00000-9169fe3a-444e-45f7-8177-30b185180d90-c000.csv",
+    "./../../data/data_cleaned/webscraped_FMC_CORP/part-00000-ea27d81f-27be-4e5a-9cc2-88ccb53607a7-c000.csv",
+    "./../../data/data_cleaned/webscraped_WEYERHAEUSER_CO/part-00000-5305ef13-248d-49c3-a77a-ae3f402be90c-c000.csv",
 ]
 
 # Layout
