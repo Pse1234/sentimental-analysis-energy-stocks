@@ -9,9 +9,9 @@ from PIL import Image
 DATE_COLUMN = "DATE"
 DATA_PATH = "./../data/stocks_data.xlsx"
 RAW_TWEETS_PATH = [
-    "./../data/webscraped_FMC_CORP.csv",
-    "./../data/webscraped_WEYERHAEUSER_CO.csv",
-    "./../data/webscraped_BP_PLC.csv",
+    "./../data/webscraped_data/webscraped_FMC_CORP.csv",
+    "./../data/webscraped_data/webscraped_WEYERHAEUSER_CO.csv",
+    "./../data/webscraped_data/webscraped_BP_PLC.csv",
 ]
 
 # Layout
