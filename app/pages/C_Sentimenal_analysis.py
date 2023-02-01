@@ -5,9 +5,9 @@ import pandas as pd
 DATE_COLUMN = "DATE"
 DATA_PATH = "./../data/stocks_data.xlsx"
 TWEETS_PREDICTED_PATH = [
-    "./../data_model/webscraped_FMC_CORP.csv",
-    "./../data_model/webscraped_WEYERHAEUSER_CO.csv",
-    "./../data_model/webscraped_BP_PLC.csv",
+    "./../../data/data_model/webscraped_FMC_CORP.csv",
+    "./../../data/data_model/webscraped_WEYERHAEUSER_CO.csv",
+    "./../../data/data_model/webscraped_BP_PLC.csv",
 ]
 
 # Layout
