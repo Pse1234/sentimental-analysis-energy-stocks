@@ -11,7 +11,7 @@ st.title("Stock Analysis based on returns 💸")
 
 # Global Variables
 DATE_COLUMN = "DATE"
-DATA_PATH = "./../data/stocks_data.xlsx"
+DATA_PATH = "./data/stocks_data.xlsx"
 
 
 @st.cache
