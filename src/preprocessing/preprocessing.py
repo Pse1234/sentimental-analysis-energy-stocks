@@ -180,6 +180,8 @@ class PreprocessorPipeline:
 if __name__ == "__main__":
 
     path = sys.argv[1]
-    output_path = "./../../data/data_cleaned/" + path.split("/")[-1]
+    file_name = path.split("/")[-1] 
+    result = file_name.split(".")[0]
+    output_path = "./../../data/data_cleaned/" + result
     preprocessing = PreprocessorPipeline(path=path, output_path=output_path)
     preprocessing.launch()
