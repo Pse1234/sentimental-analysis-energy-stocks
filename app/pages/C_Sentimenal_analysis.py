@@ -15,10 +15,10 @@ st.set_page_config(
     page_title="Sentimental analysis", page_icon=":bar_chart:", layout="wide"
 )
 
-st.title("Sentimental analysis on tweets: 📈 or 📉")
-st.header("Finance define bullish 📈 and bearish 📉 as two tendencies on stocks")
+st.title("Sentimental analysis on tweets: 📈 or 📉 ?")
+st.header("Defining bullish and bearish tendencies on stocks")
 st.subheader(
-    "If bullish is predicted in t, they recommend to buy on t+1. For us, t gonna be monthly."
+    "If bullish is predicted in t, they recommend to buy on t+1."
 )
 
 
@@ -72,7 +72,7 @@ for i, k in enumerate(df_columns_list):
 
 # Filter the stocks
 options = st.multiselect(
-    "**Select your desired blockchains:**",
+    "**Select your desired stocks:**",
     options=stocklist,
     default=None,
     key="macro_options",
@@ -113,12 +113,13 @@ tweet_list = filtered_tweets["TweetText"].tolist()
 tweet_string = " ".join(tweet_list)
 
 st.write(
-    "How to use it? You select a month, for example from 31-08-2022 to 29-09-2022\
-    and the stocks in your portfolio or that you are interesed to buy.\
+    "How to use it? \\
+    You select a month, for example from 31-08-2022 to 29-09-2022\
+    and the stocks in your portfolio or that you are interesed to buy.\\
     If the number of positive and bullish tweets is greater than the negative and bearish ones, you\
     should buy the portfolio. Let's assume that you have a maximum to invest each month for exemple, 2000$. Then\
-    the strategy is to standarise the results, if 100% of the tweets are positive or bullish, you should buy 2000$ of stocks for your portfolio.\
-    If only 40% are positives, you should buy 2000$ x 40% = 800$ of stocks for your portfolio."
+    the strategy is to standarise the results, if 100% of the tweets are positive or bullish, you should buy 2000$ of stocks for your portfolio.\\
+    If only 40 percent are positives, you should buy 2000$ x 40% = 800$ of stocks for your portfolio."
 )
 
 st.metric(

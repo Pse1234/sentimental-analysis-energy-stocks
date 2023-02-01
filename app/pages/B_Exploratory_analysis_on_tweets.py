@@ -11,8 +11,6 @@ import numpy as np
 from nltk.corpus import stopwords
 
 
-
-
 # Global Variables
 DATE_COLUMN = "DATE"
 DATA_PATH = "./data/stocks_data.xlsx"
@@ -26,7 +24,8 @@ TWEETS_PATH = [
 st.set_page_config(
     page_title="Tweets analysis for stocks", page_icon=":bar_chart:", layout="wide"
 )
-st.title("Tweets analysis for stocks 📈📉")
+st.title("Tweets analysis for stocks 🐦")
+
 
 @st.cache
 def load_data():
@@ -35,10 +34,11 @@ def load_data():
     ]
     returns = returns.rename(columns=returns.iloc[0])
     returns = returns.iloc[2:]
-    upercase = lambda x: str(x).upper()
+    def upercase(x): return str(x).upper()
     returns.rename(upercase, axis="columns", inplace=True)
     returns.reset_index(inplace=True)
-    returns.rename(columns={"level_0": "DATE1", "level_1": "DATE"}, inplace=True)
+    returns.rename(columns={"level_0": "DATE1",
+                   "level_1": "DATE"}, inplace=True)
     returns.drop(columns="DATE1", inplace=True)
     returns[DATE_COLUMN] = pd.to_datetime(returns[DATE_COLUMN]).dt.date
     # we add fmc webscrapped data
@@ -53,7 +53,8 @@ def load_data():
     tweets = pd.concat([fmc_tweets, wy_tweets, bp_tweets])
     tweets["PostDate"] = pd.to_datetime(tweets["PostDate"]).dt.date
     # we add a column with the length of each tweet
-    tweets["tweet_length"] = tweets["TweetText"].apply(lambda x: len(x.split()))
+    tweets["tweet_length"] = tweets["TweetText"].apply(
+        lambda x: len(x.split()))
     tweets["avg_word_length"] = tweets["TweetText"].apply(
         lambda x: sum(len(word) for word in x.split()) / len(x.split())
     )
@@ -116,6 +117,8 @@ filtered_tweets = tweets.loc[mask, :]
 stop_words = set(stopwords.words("english"))
 
 # Create a function to check if a word starts with a number
+
+
 def starts_with_number(word):
     return word[0].isdigit()
 
@@ -182,6 +185,7 @@ def treemap(filter_tw, number):
     )
     st.plotly_chart(fig)
 
+
 if len(options) == 0:
     st.warning("Please select at least one stock to see the metrics.")
 
@@ -192,16 +196,13 @@ elif len(options) == 1:
     st.metric(
         label=f"Number of tweets for {options[0]}:", value=str(filtered_tweets.shape[0])
     )
-    #     st.metric(label='**Total Returns**', value=str(returns[options].map('{:,.0f}'.format).values[0]))
-    #     st.metric(label='**Average Transactions/Block**', value=str(returns[options].map('{:,.0f}'.format).values[0]))
+
 
     # we select all the tweets from 2017 to 2022
     tweet_list = filtered_tweets["TweetText"].tolist()
     # join all tweets into a single string
     tweet_string = " ".join(tweet_list)
 
-    # # we have decided to remove the name of the company because is our keyword
-    # tweet_string = tweet_string.replace("weyerhaeuser", "").replace("co", "")
 
     # create the word cloud
     wordcloud = WordCloud(stopwords=stop_words).generate(tweet_string)
@@ -233,7 +234,8 @@ elif len(options) == 1:
     treemap(filtered_tweets, 0)
 
 elif len(options) == 2:
-    st.subheader(f'Analytics for {", ".join(options)} from {start_date} to {end_date}')
+    st.subheader(
+        f'Analytics for {", ".join(options)} from {start_date} to {end_date}')
     c1, c2 = st.columns(2)
 
     with c1:
@@ -265,7 +267,8 @@ elif len(options) == 2:
         wordcloud = WordCloud(stopwords=stop_words).generate(tweet_string)
         plt.figure(figsize=(10, 5))
         plt.imshow(wordcloud, interpolation="bilinear")
-        plt.title(f"Wordcloud for {options[0]} from {start_date} to {end_date}")
+        plt.title(
+            f"Wordcloud for {options[0]} from {start_date} to {end_date}")
         plt.axis("off")
         plt.show()
 
@@ -303,7 +306,8 @@ elif len(options) == 2:
         wordcloud = WordCloud(stopwords=stop_words).generate(tweet_string)
         plt.figure(figsize=(10, 5))
         plt.imshow(wordcloud, interpolation="bilinear")
-        plt.title(f"Wordcloud for {options[0]} from {start_date} to {end_date}")
+        plt.title(
+            f"Wordcloud for {options[0]} from {start_date} to {end_date}")
         plt.axis("off")
         plt.show()
 
@@ -322,7 +326,8 @@ elif len(options) == 2:
     treemap(filtered_tweets_2, 1)
 
 elif len(options) == 3:
-    st.subheader(f'Analytics for {", ".join(options)} from {start_date} to {end_date}')
+    st.subheader(
+        f'Analytics for {", ".join(options)} from {start_date} to {end_date}')
     c1, c2, c3 = st.columns(3)
 
     with c1:
@@ -354,7 +359,8 @@ elif len(options) == 3:
         wordcloud = WordCloud(stopwords=stop_words).generate(tweet_string)
         plt.figure(figsize=(10, 5))
         plt.imshow(wordcloud, interpolation="bilinear")
-        plt.title(f"Wordcloud for {options[0]} from {start_date} to {end_date}")
+        plt.title(
+            f"Wordcloud for {options[0]} from {start_date} to {end_date}")
         plt.axis("off")
         plt.show()
 
@@ -392,7 +398,8 @@ elif len(options) == 3:
         wordcloud = WordCloud(stopwords=stop_words).generate(tweet_string)
         plt.figure(figsize=(10, 5))
         plt.imshow(wordcloud, interpolation="bilinear")
-        plt.title(f"Wordcloud for {options[1]} from {start_date} to {end_date}")
+        plt.title(
+            f"Wordcloud for {options[1]} from {start_date} to {end_date}")
         plt.axis("off")
         plt.show()
 
@@ -431,7 +438,8 @@ elif len(options) == 3:
             wordcloud = WordCloud(stopwords=stop_words).generate(tweet_string)
             plt.figure(figsize=(10, 5))
             plt.imshow(wordcloud, interpolation="bilinear")
-            plt.title(f"Wordcloud for {options[2]} from {start_date} to {end_date}")
+            plt.title(
+                f"Wordcloud for {options[2]} from {start_date} to {end_date}")
             plt.axis("off")
             plt.show()
             st.pyplot(plt)
