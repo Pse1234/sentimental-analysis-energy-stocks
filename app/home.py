@@ -2,14 +2,6 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 
-hide_default_format = """
-       <style>
-       #MainMenu {visibility: hidden; }
-       footer {visibility: hidden;}
-       </style>
-       """
-st.markdown(hide_default_format, unsafe_allow_html=True)
-
 # Global Variables
 DATE_COLUMN = "DATE"
 DATA_PATH = "./data/stocks_data.xlsx" 
@@ -21,7 +13,7 @@ RAW_TWEETS_PATH = [
 
 # Layout
 twt_logo = Image.open('app/images/twitter-logo.png')
-st.set_page_config(page_title="Twitter influence on stocks", page_icon=twt_logo, layout="wide")
+st.set_page_config(page_title="Twitter influence on stocks", page_icon=twt_logo, layout="wide", menu_items=None)
 st.title("Does Twitter have influence in stocks?")
 
 
