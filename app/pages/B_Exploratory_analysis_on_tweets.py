@@ -24,7 +24,7 @@ TWEETS_PATH = [
 st.set_page_config(
     page_title="Tweets analysis for stocks", page_icon=":bar_chart:", layout="wide"
 )
-st.title("Tweets analysis for stocks 🐦")
+st.title("Tweets analysis for stocks 📈📉")
 
 
 @st.cache
@@ -196,13 +196,16 @@ elif len(options) == 1:
     st.metric(
         label=f"Number of tweets for {options[0]}:", value=str(filtered_tweets.shape[0])
     )
-
+    #     st.metric(label='**Total Returns**', value=str(returns[options].map('{:,.0f}'.format).values[0]))
+    #     st.metric(label='**Average Transactions/Block**', value=str(returns[options].map('{:,.0f}'.format).values[0]))
 
     # we select all the tweets from 2017 to 2022
     tweet_list = filtered_tweets["TweetText"].tolist()
     # join all tweets into a single string
     tweet_string = " ".join(tweet_list)
 
+    # # we have decided to remove the name of the company because is our keyword
+    # tweet_string = tweet_string.replace("weyerhaeuser", "").replace("co", "")
 
     # create the word cloud
     wordcloud = WordCloud(stopwords=stop_words).generate(tweet_string)
