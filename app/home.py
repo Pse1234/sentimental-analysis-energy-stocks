@@ -52,13 +52,13 @@ st.markdown(
 
 # Content
 c1, c2, c3, c4, c5, c6, c7 = st.columns(7)
-c1.image(Image.open('images/bp-logo.png'))
-c2.image(Image.open('images/exxonmobil-logo.png'))
-c3.image(Image.open('images/diamondbacks-logo.png'))
-c4.image(Image.open('images/totalenergies-logo.png'))
-c5.image(Image.open('images/upm-logo.png'))
-c6.image(Image.open('images/chevron-logo.png'))
-c7.image(Image.open('images/newmont-logo.png'))
+c1.image(Image.open('app/images/bp-logo.png'))
+c2.image(Image.open('app/images/exxonmobil-logo.png'))
+c3.image(Image.open('app/images/diamondbacks-logo.png'))
+c4.image(Image.open('app/images/totalenergies-logo.png'))
+c5.image(Image.open('app/images/upm-logo.png'))
+c6.image(Image.open('app/images/chevron-logo.png'))
+c7.image(Image.open('app/images/newmont-logo.png'))
 
 
 st.subheader("Presentation Twitter")
