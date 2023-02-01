@@ -49,17 +49,6 @@ for i, stock in enumerate(stock_list):
     elif i == 6:
         c7.image(Image.open(logo_path))
 
-# # Content
-# c1, c2, c3, c4, c5, c6, c7 = st.columns(7)
-# c1.image(Image.open('app/images/bp-logo.png'))
-# c2.image(Image.open('app/images/exxonmobil-logo.png'))
-# c3.image(Image.open('app/images/diamondbacks-logo.png'))
-# c4.image(Image.open('app/images/totalenergies-logo.png'))
-# c5.image(Image.open('app/images/upm-logo.png'))
-# c6.image(Image.open('app/images/chevron-logo.png'))
-# c7.image(Image.open('app/images/newmont-logo.png'))
-
-
 st.subheader("Presentation Twitter")
 st.write(
     """    
@@ -119,8 +108,6 @@ st.write(
     This aggregated model has for goal to guide us for decision in stocks, like bear or bull. 
     """
 )
-
-st.subheader("Results")
 
 st.subheader("About us")
 # -- Aknowledgments
