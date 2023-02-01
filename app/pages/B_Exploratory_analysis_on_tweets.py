@@ -24,11 +24,6 @@ st.set_page_config(
 )
 st.title("Tweets analysis for stocks 📈📉")
 
-# Style
-with open("style.css") as f:
-    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
-
 @st.cache
 def load_data():
     returns = pd.read_excel(DATA_PATH, sheet_name="Returns", header=[5, 6]).T.iloc[
