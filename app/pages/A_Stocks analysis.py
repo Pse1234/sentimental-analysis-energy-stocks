@@ -1,9 +1,7 @@
 # Libraries
 import streamlit as st
 import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
-import plotly.subplots as sp
+from PIL import Image
 
 # Layout
 twt_logo = Image.open('app/images/twitter-logo.png')
