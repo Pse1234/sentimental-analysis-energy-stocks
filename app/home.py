@@ -13,7 +13,7 @@ RAW_TWEETS_PATH = [
 
 # Layout
 twt_logo = Image.open('app/images/twitter-logo.png')
-st.set_page_config(page_title="Twitter influence on stocks", page_icon=twt_logo, layout="wide", menu_items=None)
+st.set_page_config(page_title="Twitter influence on stocks", page_icon=twt_logo, layout="wide")
 st.title("Does Twitter have influence in stocks?")
 
 
