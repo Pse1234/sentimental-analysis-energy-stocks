@@ -182,71 +182,6 @@ def treemap(filter_tw, number):
     )
     st.plotly_chart(fig)
 
-
-def word_donut_plot(df, number):
-    all_words = " ".join(df["TweetText"]).split()
-
-    # Filter out the stop words and words starting with numbers
-    all_words = [
-        word
-        for word in all_words
-        if (word.lower() not in stop_words) and (not starts_with_number(word))
-    ]
-
-    # Count the number of occurrences of each word
-    word_counts = Counter(all_words)
-
-    # Get the unique words and their counts
-    unique_words = dict(word_counts)
-
-    # Sort the dictionary by values (word counts) in descending order
-    unique_words = dict(
-        sorted(unique_words.items(), key=lambda item: item[1], reverse=True)
-    )
-
-    # Keep the first n items where n is the number of items you want to keep
-    unique_words = dict(list(unique_words.items())[:number])
-
-    # Plot the donut chart
-    fig, ax = plt.subplots(figsize=(6, 3), subplot_kw=dict(aspect="equal"))
-
-    data = list(unique_words.values())
-
-    wedges, texts = ax.pie(data, wedgeprops=dict(width=0.5), startangle=-40)
-
-    bbox_props = dict(boxstyle="square,pad=0.3", fc="w", ec="k", lw=0.72)
-    kw = dict(
-        xycoords="data",
-        textcoords="data",
-        arrowprops=dict(arrowstyle="-"),
-        bbox=bbox_props,
-        zorder=0,
-        va="center",
-    )
-
-    for i, p in enumerate(wedges):
-        ang = (p.theta2 - p.theta1) / 2.0 + p.theta1
-        y = np.sin(np.deg2rad(ang))
-        x = np.cos(np.deg2rad(ang))
-        horizontalalignment = {-1: "right", 1: "left"}[int(np.sign(x))]
-        connectionstyle = "angle,angleA=0,angleB={}".format(ang)
-        kw["arrowprops"].update({"connectionstyle": connectionstyle})
-        kw["va"] = "center"
-        ax.annotate(
-            list(unique_words.keys())[i],
-            xy=(x, y),
-            xytext=(1.7 * np.sign(x), 1.7 * y),
-            horizontalalignment=horizontalalignment,
-            **kw,
-        )
-
-    ax.set_title(f"Unique words in tweets for {options[number]}")
-
-    plt.show()
-
-    st.plotly_chart(fig)
-
-
 if len(options) == 0:
     st.warning("Please select at least one stock to see the metrics.")
 
@@ -514,7 +449,3 @@ elif len(options) == 3:
     treemap(filtered_tweets_1, 0)
     treemap(filtered_tweets_2, 1)
     treemap(filtered_tweets_3, 2)
-
-    word_donut_plot(filtered_tweets_1, 0)
-    word_donut_plot(filtered_tweets_2, 1)
-    word_donut_plot(filtered_tweets_3, 2)
