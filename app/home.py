@@ -6,11 +6,11 @@ from PIL import Image
 
 # Global Variables
 DATE_COLUMN = "DATE"
-DATA_PATH = r"./stocks_data.xlsx"
+DATA_PATH = "./../data/stocks_data.xlsx"
 RAW_TWEETS_PATH = [
-    r"./webscraped_data/webscraped_FMC_CORP.csv",
-    r"./webscraped_data/webscraped_WEYERHAEUSER_CO.csv",
-    r"./webscraped_data/webscraped_BP_PLC.csv",
+    "./../data/webscraped_data/webscraped_FMC_CORP.csv",
+    "./../data/webscraped_data/webscraped_WEYERHAEUSER_CO.csv",
+    "./../data/webscraped_data/webscraped_BP_PLC.csv",
 ]
 
 # Layout
@@ -23,32 +23,32 @@ st.markdown(
  * Use the menu at left to select data and set plot parameters for analysis
 """
 )
-# c1, c2, c3, c4, c5, c6, c7 = st.columns(7)
-# stock_list = [
-#     "bp",
-#     "exxonmobil",
-#     "diamondbacks",
-#     "totalenergies",
-#     "upm",
-#     "chevron",
-#     "newmont",
-# ]
-# for i, stock in enumerate(stock_list):
-#     logo_path = f"./images/{stock}-logo.png"
-#     if i == 0:
-#         c1.image(Image.open(logo_path))
-#     elif i == 1:
-#         c2.image(Image.open(logo_path))
-#     elif i == 2:
-#         c3.image(Image.open(logo_path))
-#     elif i == 3:
-#         c4.image(Image.open(logo_path))
-#     elif i == 4:
-#         c5.image(Image.open(logo_path))
-#     elif i == 5:
-#         c6.image(Image.open(logo_path))
-#     elif i == 6:
-#         c7.image(Image.open(logo_path))
+c1, c2, c3, c4, c5, c6, c7 = st.columns(7)
+stock_list = [
+    "bp",
+    "exxonmobil",
+    "diamondbacks",
+    "totalenergies",
+    "upm",
+    "chevron",
+    "newmont",
+]
+for i, stock in enumerate(stock_list):
+    logo_path = f"./images/{stock}-logo.png"
+    if i == 0:
+        c1.image(Image.open(logo_path))
+    elif i == 1:
+        c2.image(Image.open(logo_path))
+    elif i == 2:
+        c3.image(Image.open(logo_path))
+    elif i == 3:
+        c4.image(Image.open(logo_path))
+    elif i == 4:
+        c5.image(Image.open(logo_path))
+    elif i == 5:
+        c6.image(Image.open(logo_path))
+    elif i == 6:
+        c7.image(Image.open(logo_path))
 
 
 st.subheader("Presentation Twitter")
