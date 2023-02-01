@@ -4,11 +4,11 @@ import pandas as pd
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import nltk
-nltk.download('stopwords')
 import seaborn as sns
 import plotly.express as px
 from collections import Counter
 import numpy as np
+nltk.download('stopwords')
 
 # Global Variables
 DATE_COLUMN = "DATE"
@@ -110,7 +110,7 @@ mask = condition1 & condition2
 filtered_tweets = tweets.loc[mask, :]
 
 # Initialiser la variable des mots vides
-stopwords = stopwords.words("english")
+stop_words = set(stopwords.words("english"))
 
 # Create a function to check if a word starts with a number
 def starts_with_number(word):
@@ -126,7 +126,7 @@ def most_common_words_tweets(filter_tw, number):
     words = [
         word
         for word in words
-        if (word.lower() not in stopwords) and (not starts_with_number(word))
+        if (word.lower() not in stop_words) and (not starts_with_number(word))
     ]
 
     # Use the pandas method 'value_counts' to get the frequency of each word
@@ -160,7 +160,7 @@ def treemap(filter_tw, number):
     filtered_words = [
         word
         for word in tweet_text.split()
-        if (word.lower() not in stopwords) and (not starts_with_number(word))
+        if (word.lower() not in stop_words) and (not starts_with_number(word))
     ]
 
     # get the top 20 most common words
@@ -187,7 +187,7 @@ def word_donut_plot(df, number):
     all_words = [
         word
         for word in all_words
-        if (word.lower() not in stopwords) and (not starts_with_number(word))
+        if (word.lower() not in stop_words) and (not starts_with_number(word))
     ]
 
     # Count the number of occurrences of each word
@@ -266,7 +266,7 @@ elif len(options) == 1:
     # tweet_string = tweet_string.replace("weyerhaeuser", "").replace("co", "")
 
     # create the word cloud
-    wordcloud = WordCloud(stopwords=stopwords).generate(tweet_string)
+    wordcloud = WordCloud(stopwords=stop_words).generate(tweet_string)
     plt.figure(figsize=(10, 5))
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.title(f"Wordcloud for {options[0]} from {start_date} to {end_date}")
@@ -324,7 +324,7 @@ elif len(options) == 2:
         frequency_tweets_length_stock()
 
         # create the word cloud
-        wordcloud = WordCloud(stopwords=stopwords).generate(tweet_string)
+        wordcloud = WordCloud(stopwords=stop_words).generate(tweet_string)
         plt.figure(figsize=(10, 5))
         plt.imshow(wordcloud, interpolation="bilinear")
         plt.title(f"Wordcloud for {options[0]} from {start_date} to {end_date}")
@@ -362,7 +362,7 @@ elif len(options) == 2:
         frequency_tweets_length_stock()
 
         # create the word cloud
-        wordcloud = WordCloud(stopwords=stopwords).generate(tweet_string)
+        wordcloud = WordCloud(stopwords=stop_words).generate(tweet_string)
         plt.figure(figsize=(10, 5))
         plt.imshow(wordcloud, interpolation="bilinear")
         plt.title(f"Wordcloud for {options[0]} from {start_date} to {end_date}")
@@ -413,7 +413,7 @@ elif len(options) == 3:
         frequency_tweets_length_stock()
 
         # create the word cloud
-        wordcloud = WordCloud(stopwords=stopwords).generate(tweet_string)
+        wordcloud = WordCloud(stopwords=stop_words).generate(tweet_string)
         plt.figure(figsize=(10, 5))
         plt.imshow(wordcloud, interpolation="bilinear")
         plt.title(f"Wordcloud for {options[0]} from {start_date} to {end_date}")
@@ -451,7 +451,7 @@ elif len(options) == 3:
         frequency_tweets_length_stock()
 
         # create the word cloud
-        wordcloud = WordCloud(stopwords=stopwords).generate(tweet_string)
+        wordcloud = WordCloud(stopwords=stop_words).generate(tweet_string)
         plt.figure(figsize=(10, 5))
         plt.imshow(wordcloud, interpolation="bilinear")
         plt.title(f"Wordcloud for {options[1]} from {start_date} to {end_date}")
@@ -490,7 +490,7 @@ elif len(options) == 3:
 
         def wordcloud_stock():
             # create the word cloud
-            wordcloud = WordCloud(stopwords=stopwords).generate(tweet_string)
+            wordcloud = WordCloud(stopwords=stop_words).generate(tweet_string)
             plt.figure(figsize=(10, 5))
             plt.imshow(wordcloud, interpolation="bilinear")
             plt.title(f"Wordcloud for {options[2]} from {start_date} to {end_date}")
