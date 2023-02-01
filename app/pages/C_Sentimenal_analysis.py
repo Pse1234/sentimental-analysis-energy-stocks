@@ -113,13 +113,7 @@ tweet_list = filtered_tweets["TweetText"].tolist()
 tweet_string = " ".join(tweet_list)
 
 st.write(
-    "How to use it? \
-    You select a month, for example from 31-08-2022 to 29-09-2022\
-    and the stocks in your portfolio or that you are interesed to buy.\
-    If the number of positive and bullish tweets is greater than the negative and bearish ones, you\
-    should buy the portfolio. Let's assume that you have a maximum to invest each month for exemple, 2000$. Then\
-    the strategy is to standarise the results, if 100 percent of the tweets are positive or bullish, you should buy 2000$ of stocks for your portfolio.\
-    If only 40 percent are positives, you should buy 2000$ x 40% = 800$ of stocks for your portfolio."
+    "How to use it? You select a month, for example from 31-08-2022 to 29-09-2022 and the stocks in your portfolio or that you are interesed to buy. If the number of positive and bullish tweets is greater than the negative and bearish ones, you should buy the portfolio. Let's assume that you have a maximum to invest each month for exemple, 2000$. Then the strategy is to standarise the results, if 100 percent of the tweets are positive or bullish, you should buy 2000$ of stocks for your portfolio. If only 40 percent are positives, you should buy 2000$ x 40% = 800$ of stocks for your portfolio."
 )
 
 st.metric(
