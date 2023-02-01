@@ -8,7 +8,10 @@ import seaborn as sns
 import plotly.express as px
 from collections import Counter
 import numpy as np
-nltk.download('stopwords')
+from nltk.corpus import stopwords
+
+
+
 
 # Global Variables
 DATE_COLUMN = "DATE"
