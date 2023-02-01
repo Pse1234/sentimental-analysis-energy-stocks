@@ -23,42 +23,42 @@ st.markdown(
  * Use the menu at left to select data and set plot parameters for analysis
 """
 )
-# c1, c2, c3, c4, c5, c6, c7 = st.columns(7)
-# stock_list = [
-#     "bp",
-#     "exxonmobil",
-#     "diamondbacks",
-#     "totalenergies",
-#     "upm",
-#     "chevron",
-#     "newmont",
-# ]
-# for i, stock in enumerate(stock_list):
-#     logo_path = f"images/{stock}-logo.png"
-#     if i == 0:
-#         c1.image(Image.open(logo_path))
-#     elif i == 1:
-#         c2.image(Image.open(logo_path))
-#     elif i == 2:
-#         c3.image(Image.open(logo_path))
-#     elif i == 3:
-#         c4.image(Image.open(logo_path))
-#     elif i == 4:
-#         c5.image(Image.open(logo_path))
-#     elif i == 5:
-#         c6.image(Image.open(logo_path))
-#     elif i == 6:
-#         c7.image(Image.open(logo_path))
-
-# Content
 c1, c2, c3, c4, c5, c6, c7 = st.columns(7)
-c1.image(Image.open('app/images/bp-logo.png'))
-c2.image(Image.open('app/images/exxonmobil-logo.png'))
-c3.image(Image.open('app/images/diamondbacks-logo.png'))
-c4.image(Image.open('app/images/totalenergies-logo.png'))
-c5.image(Image.open('app/images/upm-logo.png'))
-c6.image(Image.open('app/images/chevron-logo.png'))
-c7.image(Image.open('app/images/newmont-logo.png'))
+stock_list = [
+    "bp",
+    "exxonmobil",
+    "diamondbacks",
+    "totalenergies",
+    "upm",
+    "chevron",
+    "newmont",
+]
+for i, stock in enumerate(stock_list):
+    logo_path = f"app/images/{stock}-logo.png"
+    if i == 0:
+        c1.image(Image.open(logo_path))
+    elif i == 1:
+        c2.image(Image.open(logo_path))
+    elif i == 2:
+        c3.image(Image.open(logo_path))
+    elif i == 3:
+        c4.image(Image.open(logo_path))
+    elif i == 4:
+        c5.image(Image.open(logo_path))
+    elif i == 5:
+        c6.image(Image.open(logo_path))
+    elif i == 6:
+        c7.image(Image.open(logo_path))
+
+# # Content
+# c1, c2, c3, c4, c5, c6, c7 = st.columns(7)
+# c1.image(Image.open('app/images/bp-logo.png'))
+# c2.image(Image.open('app/images/exxonmobil-logo.png'))
+# c3.image(Image.open('app/images/diamondbacks-logo.png'))
+# c4.image(Image.open('app/images/totalenergies-logo.png'))
+# c5.image(Image.open('app/images/upm-logo.png'))
+# c6.image(Image.open('app/images/chevron-logo.png'))
+# c7.image(Image.open('app/images/newmont-logo.png'))
 
 
 st.subheader("Presentation Twitter")
