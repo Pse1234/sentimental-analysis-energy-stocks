@@ -401,7 +401,7 @@ def launch():
     companies_string = "S&P 500 ENERGY INDEX"
     companies_list = companies_string.split(",")
     for i in companies_list:
-        output_path = f"./../data/webscraped_{'_'.join(i.split())}.csv"
+        output_path = f"./../../data/webscraped_data/webscraped_{'_'.join(i.split())}.csv"
         print(f"Scrapping: {i} in twitter")
         TwitterScrapper(
             research=i,
