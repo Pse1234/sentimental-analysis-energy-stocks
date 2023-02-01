@@ -9,6 +9,7 @@ import plotly.express as px
 from collections import Counter
 import numpy as np
 from nltk.corpus import stopwords
+from PIL import Image
 
 
 # Global Variables
@@ -21,7 +22,7 @@ TWEETS_PATH = [
 ]
 
 # Layout
-twt_logo = Image.open('app/images/twitter-logo.png')
+twt_logo = Image.open('./app/images/twitter-logo.png')
 st.set_page_config(
     page_title="Tweets analysis for stocks", page_icon=twt_logo, layout="wide"
 )
