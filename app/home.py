@@ -34,13 +34,13 @@ stock_list = [
     "newmont",
 ]
 
-c1.image(Image.open(r"./images/bp-logo.png"))
-c2.image(Image.open(r"./images/chevron-logo.png"))
-c3.image(Image.open(r"./images/diamondbacks-logo.png"))
-c4.image(Image.open(r"./images/exxonmobil-logo.png"))
-c5.image(Image.open(r"./images/newmont-logo.png"))
-c6.image(Image.open(r"./images/totalenergies-logo.png"))
-c7.image(Image.open(r"./images/upm-logo.png"))
+c1.image(Image.open(r"./bp-logo.png"))
+c2.image(Image.open(r"./chevron-logo.png"))
+c3.image(Image.open(r"./diamondbacks-logo.png"))
+c4.image(Image.open(r"./exxonmobil-logo.png"))
+c5.image(Image.open(r"./newmont-logo.png"))
+c6.image(Image.open(r"./totalenergies-logo.png"))
+c7.image(Image.open(r"./upm-logo.png"))
 
 
 st.subheader("Presentation Twitter")
