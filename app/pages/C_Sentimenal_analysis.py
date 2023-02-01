@@ -3,7 +3,7 @@ import pandas as pd
 
 # Global Variables
 DATE_COLUMN = "DATE"
-DATA_PATH = "./../data/stocks_data.xlsx"
+DATA_PATH = "./data/stocks_data.xlsx"
 TWEETS_PREDICTED_PATH = [
     "./data/data_model/webscraped_FMC_CORP.csv",
     "./data/data_model/webscraped_WEYERHAEUSER_CO.csv",
