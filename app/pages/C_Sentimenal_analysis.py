@@ -120,7 +120,7 @@ st.write(
     "If the number of positive and bullish tweets is greater than the negative and bearish ones, you should buy the portfolio.")
 
 st.write(
-    "Suppose you have a monthly investment limit of $2000. The strategy is to standardize returns. If all tweets are positive or bullish, you should invest $2000 in stocks for your portfolio. If only 40% of tweets are positive, you should invest $2000 x 40% = $800 in stocks for your portfolio."
+    "Suppose you have a monthly investment limit of 2000 dollars. The strategy is to standardize returns. If all tweets are positive or bullish, you should invest 2000 dollars in stocks for your portfolio. If only 40 percent of tweets are positive, you should invest 2000 x 40 = 800 dollars in stocks for your portfolio."
 )
 st.metric(
     label=f"Number of tweets for the portfolio:",
