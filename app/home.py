@@ -14,7 +14,7 @@ RAW_TWEETS_PATH = [
 ]
 
 # Layout
-st.set_page_config(page_title="Twitter Stocks", page_icon=":bar_chart:", layout="wide")
+st.set_page_config(page_title="Twitter influence on stocks", page_icon=":bar_chart:", layout="wide")
 st.title("Does Twitter have influence in stocks?")
 
 
