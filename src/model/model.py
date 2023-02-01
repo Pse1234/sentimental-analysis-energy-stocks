@@ -63,7 +63,7 @@ class Model:
 if __name__ == "__main__":
 
     dataframe_path = sys.argv[1]
-    output_path = "./../../data/data_model/" + dataframe_path.split("/")[-2]
+    output_path = "./../../data/data_model/" + dataframe_path.split("/")[-2]+".csv"
     model = Model()
     df = model.predict(dataframe_path, output_path)
     print("Here is the result :) ")
