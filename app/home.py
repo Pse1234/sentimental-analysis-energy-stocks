@@ -2,7 +2,13 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 
-# from Home import load_data
+hide_default_format = """
+       <style>
+       #MainMenu {visibility: hidden; }
+       footer {visibility: hidden;}
+       </style>
+       """
+st.markdown(hide_default_format, unsafe_allow_html=True)
 
 # Global Variables
 DATE_COLUMN = "DATE"
