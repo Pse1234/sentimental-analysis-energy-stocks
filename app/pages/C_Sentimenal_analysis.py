@@ -17,10 +17,6 @@ st.set_page_config(
 
 st.title("Sentimental analysis on tweets: 📈 or 📉 ?")
 st.header("Defining bullish and bearish tendencies on stocks")
-st.subheader(
-    "If bullish is predicted in t, they recommend to buy on t+1."
-)
-
 
 @st.cache
 def load_predicted_data():
