@@ -33,22 +33,14 @@ stock_list = [
     "chevron",
     "newmont",
 ]
-for i, stock in enumerate(stock_list):
-    logo_path = f"./images/{stock}-logo.png"
-    if i == 0:
-        c1.image(Image.open(logo_path))
-    elif i == 1:
-        c2.image(Image.open(logo_path))
-    elif i == 2:
-        c3.image(Image.open(logo_path))
-    elif i == 3:
-        c4.image(Image.open(logo_path))
-    elif i == 4:
-        c5.image(Image.open(logo_path))
-    elif i == 5:
-        c6.image(Image.open(logo_path))
-    elif i == 6:
-        c7.image(Image.open(logo_path))
+
+c1.image(Image.open(r"./images/bp-logo.png"))
+c2.image(Image.open(r"./images/chevron-logo.png"))
+c3.image(Image.open(r"./images/diamondbacks-logo.png"))
+c4.image(Image.open(r"./images/exxonmobil-logo.png"))
+c5.image(Image.open(r"./images/newmont-logo.png"))
+c6.image(Image.open(r"./images/totalenergies-logo.png"))
+c7.image(Image.open(r"./images/upm-logo.png"))
 
 
 st.subheader("Presentation Twitter")
