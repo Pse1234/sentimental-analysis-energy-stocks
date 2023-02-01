@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
+import nltk
 from nltk.corpus import stopwords
 import seaborn as sns
 import plotly.express as px
