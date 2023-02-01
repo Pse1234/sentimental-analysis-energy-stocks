@@ -6,7 +6,8 @@ import plotly.graph_objects as go
 import plotly.subplots as sp
 
 # Layout
-st.set_page_config(page_title="Stock Analysis", page_icon=":bar_chart:", layout="wide")
+twt_logo = Image.open('app/images/twitter-logo.png')
+st.set_page_config(page_title="Stock Analysis", page_icon=twt_logo, layout="wide")
 st.title("Stock Analysis based on returns 💸")
 
 # Global Variables

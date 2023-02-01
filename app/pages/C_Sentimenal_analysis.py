@@ -11,8 +11,9 @@ TWEETS_PREDICTED_PATH = [
 ]
 
 # Layout
+twt_logo = Image.open('app/images/twitter-logo.png')
 st.set_page_config(
-    page_title="Sentimental analysis", page_icon=":bar_chart:", layout="wide"
+    page_title="Sentimental analysis", page_icon=twt_logo, layout="wide"
 )
 
 st.title("Sentimental analysis on tweets: 📈 or 📉 ?")
