@@ -6,11 +6,11 @@ from PIL import Image
 
 # Global Variables
 DATE_COLUMN = "DATE"
-DATA_PATH = r"./../data/stocks_data.xlsx"
+DATA_PATH = r"./stocks_data.xlsx"
 RAW_TWEETS_PATH = [
-    r"./../data/webscraped_data/webscraped_FMC_CORP.csv",
-    r"./../data/webscraped_data/webscraped_WEYERHAEUSER_CO.csv",
-    r"./../data/webscraped_data/webscraped_BP_PLC.csv",
+    r"./webscraped_data/webscraped_FMC_CORP.csv",
+    r"./webscraped_data/webscraped_WEYERHAEUSER_CO.csv",
+    r"./webscraped_data/webscraped_BP_PLC.csv",
 ]
 
 # Layout
