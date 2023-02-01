@@ -4,7 +4,7 @@ import pandas as pd
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import nltk
-from nltk.corpus import stopwords
+nltk.download('stopwords')
 import seaborn as sns
 import plotly.express as px
 from collections import Counter
