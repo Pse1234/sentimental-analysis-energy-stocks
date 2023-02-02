@@ -5,6 +5,7 @@ class PortfolioModel:
         self.df = df
 
     def formatting(self) -> None:
+        """Formatting the dates and encoding sentiment columns positive or bullish -> 1, negative or bearish -> -1, neutral -> 0"""
         self.df['PostDate'] = pandas.to_datetime(self.df['PostDate'].apply(lambda x: x[:-3]))
 
         # add a column for the year and month
@@ -22,7 +23,6 @@ class PortfolioModel:
         # count the number of positive and negative tweets for each year and month
         sentiment_positive_tweets_by_month = grouped['sentiment'].apply(lambda x: (x == 1).sum())
         sentiment_negative_tweets_by_month = grouped['sentiment'].apply(lambda x: (x == -1).sum())
-
         sentiment_base_positive_tweets_by_month = grouped['sentiment_base'].apply(lambda x: (x == 1).sum())
         sentiment_base_neutral_tweets_by_month = grouped['sentiment_base'].apply(lambda x: (x == 0).sum())
         sentiment_base_negative_tweets_by_month = grouped['sentiment_base'].apply(lambda x: (x == -1).sum())
