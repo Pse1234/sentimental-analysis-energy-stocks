@@ -1,8 +1,11 @@
 import pandas
 
 class PortfolioModel:
-    def __init__(self, df:pandas.DataFrame) -> None:
-        self.df = df
+    def __init__(self, path:str) -> None:
+        self.path = path
+
+    def read_data(self):
+        self.df = pandas.read_csv(self.path)
 
     def formatting(self) -> None:
         """Formatting the dates and encoding sentiment columns positive or bullish -> 1, negative or bearish -> -1, neutral -> 0"""
@@ -37,14 +40,29 @@ class PortfolioModel:
         return positive_ratios_by_month
 
     def short_or_long(self):
-        positive_ratios_by_month = positive_ratio()
+        positive_ratios_by_month = self.positive_ratio()
+        date_index = positive_ratios_by_month['yearmonth'].unique().tolist()
         unique_companies = positive_ratios_by_month['company'].unique().tolist()
+        df = pandas.DataFrame(index=date_index)
         for company in unique_companies:
             # selection of the company
             mask = positive_ratios_by_month['company'] == company
             stock_ratios = positive_ratios_by_month.loc[mask]
 
             # selection of the period
-            unique_month_year = stock_ratios['yearmonth'].unique().tolist()
-            stock_ratios['positive_ratio_shifted'] = stock_ratios['positive_ratio'].shift(1)
-            stock_ratios['buy_or_sell_ratio'] = (stock_ratios['positive_ratio_shifted'] - 0.5) * 2
+            stock_ratios.loc[:, 'positive_ratio_shifted'] = stock_ratios['positive_ratio'].shift(1)
+            stock_ratios.loc[:, 'buy_or_sell'] = (stock_ratios['positive_ratio_shifted'] - 0.5) * 2
+            stock_ratios.set_index('yearmonth', inplace=True)
+            # saving info in a dataframe
+            df[company] = stock_ratios['buy_or_sell']
+        return df
+    
+    def launch(self):
+        self.read_data()
+        self.formatting()
+        df = self.short_or_long()
+        print(df)
+
+if __name__ == "__main__":
+    path = "./../../data/data_model/all_data.csv"
+    model = PortfolioModel(path=path).launch()
