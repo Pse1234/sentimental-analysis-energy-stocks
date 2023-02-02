@@ -36,5 +36,3 @@ class PortfolioModel:
             pass
     def long(self):
         pass
-
-    
