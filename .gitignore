@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-*.DS_Store
+.DS_Store/
 # C extensions
 *.so
 
@@ -127,3 +127,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.DS_Store
+data/.DS_Store
