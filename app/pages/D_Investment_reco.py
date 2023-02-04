@@ -26,6 +26,7 @@ def load_predicted_data():
     returns.drop(columns="DATE1", inplace=True)
 
     except_column = "DATE"
+    returns.fillna(0, inplace=True)
     selected_columns = [col for col in returns.columns if col != except_column]
     # result = returns[selected_columns].apply(lambda x: x / 100 + 1, axis=1)
     # returns = pd.concat([returns[except_column], result], axis=1)
@@ -37,7 +38,7 @@ def load_predicted_data():
     #     + "-"
     #     + returns["month"].astype(str).str.zfill(2)
     # )
-    returns.fillna(0, inplace=True)
+    
 
     return results, strategy, returns
 
