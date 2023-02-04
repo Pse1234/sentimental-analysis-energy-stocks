@@ -76,6 +76,7 @@ options = st.multiselect(
 # tweet_list = filtered_tweets["TweetText"].tolist()
 # # join all tweets into a single string
 # tweet_string = " ".join(tweet_list)
+st.dataframe(results)
 
 results = results.reset_index(drop=False)
 results = results.rename(columns={'index': 'companies'})
