@@ -37,7 +37,7 @@ def load_predicted_data():
         + "-"
         + returns["month"].astype(str).str.zfill(2)
     )
-    returns.fillna(0, inplace=True)
+    # returns.fillna(0, inplace=True)
 
     return results, strategy, returns
 
