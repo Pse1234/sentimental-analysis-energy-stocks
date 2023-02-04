@@ -169,7 +169,7 @@ class PortfolioModel:
         for col in self.stocklist:
             self.printing_results.loc[col, 'total_investment'] = self.shortlongdf[self.shortlongdf[col] > 0][col].sum()
             self.printing_results.loc[col, 'total_return'] = self.shortlongdf[col+'_cumulative_sum'].sum()
-            self.printing_results.loc[col, 'to_compare_with_based'] = self.returns[self.search_dictio.get(col).upper()].prod()
+            self.printing_results.loc[col, 'to_compare_with_based'] = self.returns[self.search_dictio.get(col).upper()].prod() -1
         self.printing_results['relative_return_pct'] = self.printing_results['total_return'] / self.printing_results['total_investment']
         
         self.printing_results.to_csv("./../../data/data_model/results.csv")
