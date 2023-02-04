@@ -82,17 +82,17 @@ results_selected = results.loc[selected_stocks]
 
 c1, c2, c3, c4 = st.columns(4)
 
-# with c1:
-#     st.metric(
-#         label=f"Investment recommendation on the portfolio:",
-#         value=str(results[results["sentiment"] == "Bullish"].shape[0]),
-#     )
+with c1:
+    st.metric(
+        label=f"Investment recommendation on the portfolio:",
+        value=str(round(results_selected["total_investment"].sum()*100, 2)),
+    )
 
-# with c2:
-#     st.metric(
-#         label=f"Return of the recommended investment:",
-#         value=str(filtered_tweets[filtered_tweets["sentiment"] == "Bearish"].shape[0]),
-#     )
+with c2:
+    st.metric(
+        label=f"Return of the recommended investment:",
+        value=str(round(results_selected["total_return"].sum()*100, 2)),
+    )
 
 with c3:
     st.metric(
