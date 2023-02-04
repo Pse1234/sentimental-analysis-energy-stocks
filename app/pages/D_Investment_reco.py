@@ -27,11 +27,8 @@ def load_predicted_data():
     returns["DATE"] = pd.to_datetime(returns["DATE"]).dt.date
     return results, strategy, returns
 
-
-
 results, strategy, returns = load_predicted_data()
 
-st.dataframe(returns)
 strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
 strategy['month_invest'] = pd.to_datetime(strategy['month_invest']).dt.date
 
@@ -85,14 +82,14 @@ condition2 = strategy["month_invest"] <= end_date
 mask = condition1 & condition2
 filtered_investment = strategy.loc[mask, :]
 
-# printing_results = pd.DataFrame()
-# for col in stocklist:
-#     printing_results.loc[col, 'total_investment'] = filtered_investment[filtered_investment[col] > 0][col].sum()
-#     printing_results.loc[col, 'total_return'] = filtered_investment[col+'_cumulative_sum'].sum()
-#     printing_results.loc[col, 'market_results'] = returns[search_dictio.get(col).upper()].prod() -1
-# printing_results['strategy_results'] = printing_results['total_return'] / printing_results['total_investment']
+printing_results = pd.DataFrame()
+for col in stocklist:
+    printing_results.loc[col, 'total_investment'] = filtered_investment[filtered_investment[col] > 0][col].sum()
+    printing_results.loc[col, 'total_return'] = filtered_investment[col+'_cumulative_sum'].sum()
+    printing_results.loc[col, 'market_results'] = returns[search_dictio.get(col).upper()].prod() -1
+printing_results['strategy_results'] = printing_results['total_return'] / printing_results['total_investment']
 
-# st.dataframe(printing_results)
+st.dataframe(printing_results)
 
 results = results.rename(columns={'Unnamed: 0': 'companies'})
 results.fillna(0, inplace=True)
