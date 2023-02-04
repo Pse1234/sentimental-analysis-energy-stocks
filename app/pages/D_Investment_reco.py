@@ -44,9 +44,6 @@ options = st.multiselect(
     key="macro_options",
 )
 
-st.dataframe(results)
-st.write(options)
-
 # min_date = tweets["PostDate"].min()
 # max_date = tweets["PostDate"].max()
 
@@ -80,9 +77,11 @@ st.write(options)
 # # join all tweets into a single string
 # tweet_string = " ".join(tweet_list)
 
-# results = results.reset_index(drop=False)
-# results = results.rename(columns={'index': 'companies'})
-# selected_stocks = results['companies'] == options
+results = results.reset_index(drop=False)
+results = results.rename(columns={'index': 'companies'})
+selected_stocks = results['companies'].isin(options)
+
+st.dataframe(selected_stocks)
 
 # c1, c2, c3, c4 = st.columns(4)
 
