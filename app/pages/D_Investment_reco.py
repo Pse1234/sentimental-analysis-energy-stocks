@@ -27,8 +27,8 @@ def load_predicted_data():
 
     except_column = "DATE"
     selected_columns = [col for col in returns.columns if col != except_column]
-    result = returns[selected_columns].apply(lambda x: x / 100 + 1, axis=1)
-    returns = pd.concat([returns[except_column], result], axis=1)
+    # result = returns[selected_columns].apply(lambda x: x / 100 + 1, axis=1)
+    # returns = pd.concat([returns[except_column], result], axis=1)
     # returns["DATE"] = pd.to_datetime(returns["DATE"])
     # returns["year"] = returns["DATE"].dt.year
     # returns["month"] = returns["DATE"].dt.month
