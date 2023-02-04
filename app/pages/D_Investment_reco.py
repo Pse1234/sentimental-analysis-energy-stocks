@@ -11,7 +11,7 @@ st.set_page_config(
 st.title("Investment Recommendation for the selected period")
 st.header("Long or Short stocks")
 
-@st.cache
+@st.cache(suppress_st_warning=True)
 def load_predicted_data():
     results = pd.read_csv("./data/data_model/results.csv",)
     strategy = pd.read_csv("./data/data_model/todo.csv",)
