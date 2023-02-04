@@ -51,25 +51,27 @@ options = st.multiselect(
     key="macro_options",
 )
 
-# min_date = strategy["month_invest"].min()
-# max_date = strategy["month_invest"].max()
+min_date = strategy["month_invest"].min()
+max_date = strategy["month_invest"].max()
 
-# # filter start date
-# start_date = st.date_input(
-#     "**Select a start date:**",
-#     min_value=min_date,
-#     max_value=max_date,
-#     value=min_date,
-#     key="start_date",
-# )
-# # filter end date
-# end_date = st.date_input(
-#     "**Select an end date:**",
-#     min_value=min_date,
-#     max_value=max_date,
-#     value=max_date,
-#     key="end_date",
-# )
+# filter start date
+start_date = st.date_input(
+    "**Select a start date:**",
+    min_value=min_date,
+    max_value=max_date,
+    value=min_date,
+    key="start_date",
+)
+# filter end date
+end_date = st.date_input(
+    "**Select an end date:**",
+    min_value=min_date,
+    max_value=max_date,
+    value=max_date,
+    key="end_date",
+)
+
+st.write(min_date, max_date)
 
 # condition1 = start_date <= strategy["month_invest"]
 # condition2 = strategy["month_invest"] <= end_date
