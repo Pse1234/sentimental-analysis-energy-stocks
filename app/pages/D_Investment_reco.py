@@ -78,8 +78,7 @@ options = st.multiselect(
 # tweet_string = " ".join(tweet_list)
 results = results.rename(columns={'Unnamed: 0': 'companies'})
 selected_stocks = results['companies'].isin(options)
-
-st.dataframe(results.loc[selected_stocks])
+results_selected = results.loc[selected_stocks]
 
 c1, c2, c3, c4 = st.columns(4)
 
@@ -99,7 +98,7 @@ with c3:
     st.metric(
         label=f"Percentage of benefice or loss generated with our strategy:",
         value=str(
-            round(results.loc[selected_stocks, "relative_return_pct"].mean()*100)
+            round(results_selected["relative_return_pct"].mean()*100)
         ) + "%"
     )
 
@@ -107,6 +106,6 @@ with c4:
     st.metric(
         label=f"Percentage of benefice or loss generated with an equipondered portfolio:",
         value=str(
-            round(results.loc[selected_stocks, "to_compare_with_based"].mean()*100)
+            round(results_selected["to_compare_with_based"].mean()*100)
         ) + "%"
     )
