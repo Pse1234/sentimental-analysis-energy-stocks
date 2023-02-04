@@ -85,13 +85,13 @@ c1, c2, c3, c4 = st.columns(4)
 with c1:
     st.metric(
         label=f"Investment recommendation on the portfolio:",
-        value=str(round(results_selected["total_investment"].sum()*100, 2)),
+        value=str(round(results_selected["total_investment"].sum(), 2)),
     )
 
 with c2:
     st.metric(
         label=f"Return of the recommended investment:",
-        value=str(round(results_selected["total_return"].sum()*100, 2)),
+        value=str(round(results_selected["total_return"].sum(), 2)),
     )
 
 with c3:
