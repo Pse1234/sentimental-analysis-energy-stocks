@@ -15,9 +15,11 @@ st.header("Long or Short stocks")
 def load_predicted_data():
     results = pd.read_csv("./data/data_model/results.csv",)
     strategy = pd.read_csv("./data/data_model/todo.csv",)
-    return results, strategy
+    returns = pd.read_excel("./data/stocks_data.xlsx", sheet_name="Returns", header=[5, 6]
+        ).T.iloc[2:, :]
+    return results, strategy, returns
 
-results, strategy = load_predicted_data()
+results, strategy, returns = load_predicted_data()
 strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
 strategy['month_invest'] = pd.to_datetime(strategy['month_invest']).dt.date
 
@@ -75,7 +77,7 @@ printing_results = pd.DataFrame()
 for col in stocklist:
     printing_results.loc[col, 'total_investment'] = filtered_investment[filtered_investment[col] > 0][col].sum()
     printing_results.loc[col, 'total_return'] = filtered_investment[col+'_cumulative_sum'].sum()
-    printing_results.loc[col, 'market_results'] = filtered_investment[search_dictio.get(col).upper()].prod() -1
+    printing_results.loc[col, 'market_results'] = returns[search_dictio.get(col).upper()].prod() -1
 printing_results['strategy_results'] = printing_results['total_return'] / printing_results['total_investment']
 
 st.dataframe(printing_results)
