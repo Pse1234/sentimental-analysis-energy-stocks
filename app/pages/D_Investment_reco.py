@@ -15,11 +15,10 @@ st.header("Long or Short stocks")
 def load_predicted_data():
     results = pd.read_csv("./data/data_model/results.csv",)
     strategy = pd.read_csv("./data/data_model/todo.csv",)
-    # returns = pd.read_excel("./data/stocks_data.xlsx", sheet_name="Returns", header=[5, 6]
-    #     ).T.iloc[2:, :]
-    return results, strategy#, returns
+    returns = pd.read_excel("./data/stocks_data.xlsx", sheet_name="Returns", header=[5, 6]).T.iloc[2:, :]
+    return results, strategy, returns
 
-results, strategy = load_predicted_data()
+results, strategy, returns = load_predicted_data()
 strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
 strategy['month_invest'] = pd.to_datetime(strategy['month_invest']).dt.date
 
