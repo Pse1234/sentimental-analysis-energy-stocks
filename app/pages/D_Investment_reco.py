@@ -80,6 +80,8 @@ st.dataframe(results)
 
 results = results.reset_index(drop=False)
 results = results.rename(columns={'index': 'companies'})
+
+st.dataframe(results)
 selected_stocks = results['companies'].isin(options)
 
 st.dataframe(results.loc[selected_stocks])
