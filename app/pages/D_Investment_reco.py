@@ -24,7 +24,20 @@ def load_predicted_data():
         columns={"UNNAMED: 2_LEVEL_0": "DATE1", "UNNAMED: 2_LEVEL_1": "DATE"}, inplace=True
     )
     returns.drop(columns="DATE1", inplace=True)
-    returns["DATE"] = pd.to_datetime(returns["DATE"]).dt.date
+
+    except_column = "DATE"
+    selected_columns = [col for col in returns.columns if col != except_column]
+    result = returns[selected_columns].apply(lambda x: x / 100 + 1, axis=1)
+    returns = pd.concat([returns[except_column], result], axis=1)
+    returns["DATE"] = pd.to_datetime(returns["DATE"])
+    returns["year"] = returns["DATE"].dt.year
+    returns["month"] = returns["DATE"].dt.month
+    returns["yearmonth"] = (
+        returns["year"].astype(str)
+        + "-"
+        + returns["month"].astype(str).str.zfill(2)
+    )
+
     return results, strategy, returns
 
 results, strategy, returns = load_predicted_data()
@@ -86,11 +99,9 @@ printing_results = pd.DataFrame()
 for col in stocklist:
     printing_results.loc[col, 'total_investment'] = filtered_investment[filtered_investment[col] > 0][col].sum()
     printing_results.loc[col, 'total_return'] = filtered_investment[col+'_cumulative_sum'].sum()
-    # printing_results.loc[col, 'market_results'] = returns[search_dictio.get(col).upper()].prod() - 1
+    printing_results.loc[col, 'market_results'] = returns[search_dictio.get(col).upper()].prod() - 1
 printing_results['strategy_results'] = printing_results['total_return'] / printing_results['total_investment']
-st.dataframe(returns)
-st.write(search_dictio)
-st.dataframe(printing_results)
+
 
 results = results.rename(columns={'Unnamed: 0': 'companies'})
 results.fillna(0, inplace=True)
