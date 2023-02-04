@@ -76,7 +76,6 @@ condition2 = strategy["month_invest"] <= end_date
 mask = condition1 & condition2
 filtered_investment = strategy.loc[mask, :]
 
-st.dataframe(returns)
 # printing_results = pd.DataFrame()
 # for col in stocklist:
 #     printing_results.loc[col, 'total_investment'] = filtered_investment[filtered_investment[col] > 0][col].sum()
