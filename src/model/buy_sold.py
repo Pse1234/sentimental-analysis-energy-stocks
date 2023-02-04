@@ -53,6 +53,16 @@ class PortfolioModel:
             + "-"
             + self.returns["month"].astype(str).str.zfill(2)
         )
+        result_on_pct = self.returns[selected_columns].apply(lambda x: x / 100, axis=1)
+        self.returns_on_pct = pandas.concat([self.returns[except_column], result_on_pct], axis=1)
+        self.returns_on_pct["DATE"] = pandas.to_datetime(self.returns["DATE"])
+        self.returns_on_pct["year"] = self.returns_on_pct["DATE"].dt.year
+        self.returns_on_pct["month"] = self.returns_on_pct["DATE"].dt.month
+        self.returns_on_pct["yearmonth"] = (
+            self.returns_on_pct["year"].astype(str)
+            + "-"
+            + self.returns_on_pct["month"].astype(str).str.zfill(2)
+        )
 
     def positive_ratio(self) -> pandas.DataFrame:
         # group the data by year and month
@@ -117,30 +127,63 @@ class PortfolioModel:
             stock_ratios.set_index("yearmonth", inplace=True)
             # saving info in a dataframe
             self.shortlongdf[company] = stock_ratios["buy_or_sell"]
-            print(self.shortlongdf)
 
-    def cumulative_sum(self, col_name):
-        """cumulative sum fonction to buy and sell a stock with the condition, only sell if we have on stock"""
+    def calculating_stock(self, company_name, stock_name):
+        """ we calcule for each stock the returns and the stock at t: we are going to use self.returns and self.shortlongdf"""
+
         cumulative_sum = 0
         cumulative_sum_list = []
         self.shortlongdf.fillna(0, inplace=True)
-        for value in self.shortlongdf[col_name]:
+        assert self.returns.shape[0] == self.shortlongdf.shape[0], "Returns dataframe has not the same length as the webscrapped data"
+        for i, value in enumerate(self.shortlongdf[company_name]):
             cumulative_sum += value
             if cumulative_sum < 0:
                 cumulative_sum = 0
+            cumulative_sum = cumulative_sum * self.returns_on_pct.loc[i, stock_name]
             cumulative_sum_list.append(cumulative_sum)
-        self.shortlongdf[f"{col_name}_cumulative_sum"] = cumulative_sum_list
+        self.shortlongdf[f"{company_name}_cumulative_sum"] = cumulative_sum_list
 
-    def cumsum_per_stock(self):
+    def cumsum_of_returns_per_stock(self):
         """cumsum for all stocks"""
+        self.stocklist = [
+            "BP PLC",
+            "FMC CORP",
+            "WEYERHAEUSER CO",
+        ]
+
+        self.df_columns_list = [
+            "BP/ LN Equity",
+            "FMC US Equity",
+            "WY US Equity",
+        ]
+
+        self.search_dictio = {}
+        for i, k in enumerate(self.df_columns_list):
+            self.search_dictio[self.stocklist[i]] = k
+        
         for col_name in self.shortlongdf.columns.to_list():
-            self.cumulative_sum(col_name)
+            self.calculating_stock(col_name, stock_name = self.search_dictio.get(col_name).upper())
+
+    def results_per_stock(self):
+        self.printing_results = pandas.DataFrame()
+        for col in self.stocklist:
+            self.printing_results.loc[col, 'total_investment'] = self.shortlongdf[self.shortlongdf[col] > 0][col].sum()
+            self.printing_results.loc[col, 'total_return'] = self.shortlongdf[col+'_cumulative_sum'].sum()
+            self.printing_results.loc[col, 'to_compare_with_based'] = self.returns[self.search_dictio.get(col).upper()].prod()
+        self.printing_results['relative_return_pct'] = self.printing_results['total_return'] / self.printing_results['total_investment']
+        
+        print(self.printing_results)
 
     def launch(self):
+        # reading returns and analyse data NLP
         self.read_data()
+        # formatting the data
         self.formatting()
+        # returning a dataframe with if short or long stocks by date
         self.short_or_long()
-        self.cumsum_per_stock()
+
+        self.cumsum_of_returns_per_stock()
+        self.results_per_stock()
 
 
 if __name__ == "__main__":
