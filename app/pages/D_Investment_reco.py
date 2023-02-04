@@ -91,7 +91,8 @@ with c1:
 with c2:
     st.metric(
         label=f"Return of the recommended investment:",
-        value=str(round(results_selected["total_return"].sum(), 2)),
+        value=str(round(results_selected["total_return"].sum()*100, 2)
+        ) + "%"
     )
 
 with c3:
