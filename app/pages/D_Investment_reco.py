@@ -71,15 +71,14 @@ condition2 = strategy["month_invest"] <= end_date
 mask = condition1 & condition2
 filtered_investment = strategy.loc[mask, :]
 
-# printing_results = pd.DataFrame()
-# for col in stocklist:
-#     printing_results.loc[col, 'total_investment'] = strategy[strategy[col] > 0][col].sum()
-#     printing_results.loc[col, 'total_return'] = strategy[col+'_cumulative_sum'].sum()
-#     printing_results.loc[col, 'market_results'] = strategy[search_dictio.get(col).upper()].prod() -1
-# printing_results['strategy_results'] = printing_results['total_return'] / printing_results['total_investment']
+printing_results = pd.DataFrame()
+for col in stocklist:
+    printing_results.loc[col, 'total_investment'] = filtered_investment[filtered_investment[col] > 0][col].sum()
+    printing_results.loc[col, 'total_return'] = filtered_investment[col+'_cumulative_sum'].sum()
+    printing_results.loc[col, 'market_results'] = filtered_investment[search_dictio.get(col).upper()].prod() -1
+printing_results['strategy_results'] = printing_results['total_return'] / printing_results['total_investment']
 
-st.dataframe(strategy)
-st.dataframe(filtered_investment)
+st.dataframe(printing_results)
 
 results = results.rename(columns={'Unnamed: 0': 'companies'})
 results.fillna(0, inplace=True)
