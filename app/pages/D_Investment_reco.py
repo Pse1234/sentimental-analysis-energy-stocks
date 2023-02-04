@@ -77,6 +77,8 @@ options = st.multiselect(
 # # join all tweets into a single string
 # tweet_string = " ".join(tweet_list)
 results = results.rename(columns={'Unnamed: 0': 'companies'})
+results.fillna(0, inplace=True)
+st.dataframe(results)
 selected_stocks = results['companies'].isin(options)
 results_selected = results.loc[selected_stocks]
 
