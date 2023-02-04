@@ -107,7 +107,7 @@ with c3:
     st.metric(
         label=f"Benefice of our strategy:",
         value=str(
-            round(results_selected["relative_return_pct"].mean()*100, 2)
+            round(results_selected["strategy_results"].mean()*100, 2)
         ) + "%"
     )
 
@@ -115,7 +115,7 @@ with c4:
     st.metric(
         label=f"Benefice of market:",
         value=str(
-            round(results_selected["to_compare_with_based"].mean()*100, 2)
+            round(results_selected["market_results"].mean()*100, 2)
         ) + "%"
     )
 
