@@ -36,6 +36,10 @@ class PortfolioModel:
         selected_columns = [col for col in self.returns.columns if col != except_column]
         result = self.returns[selected_columns].apply(lambda x: x/100 + 1, axis=1)
         self.returns = pandas.concat([self.returns[except_column], result], axis=1)
+        self.returns["DATE"] = pandas.to_datetime(self.returns["DATE"])
+        self.returns['year'] = self.returns["DATE"].dt.year
+        self.returns['month'] = self.returns["DATE"].dt.month
+        self.returns['yearmonth'] = self.returns['year'].astype(str) + '-' + self.returns['month'].astype(str).str.zfill(2)
 
     def positive_ratio(self) -> pandas.DataFrame:
         # group the data by year and month
@@ -58,6 +62,7 @@ class PortfolioModel:
         return positive_ratios_by_month
 
     def short_or_long(self):
+        """new dataframe with buy or sell at t"""
         positive_ratios_by_month = self.positive_ratio()
         date_index = positive_ratios_by_month['yearmonth'].unique().tolist()
         unique_companies = positive_ratios_by_month['company'].unique().tolist()
@@ -73,8 +78,10 @@ class PortfolioModel:
             stock_ratios.set_index('yearmonth', inplace=True)
             # saving info in a dataframe
             self.shortlongdf[company] = stock_ratios['buy_or_sell']
+            print(self.shortlongdf)
 
     def cumulative_sum(self, col_name):
+        """ cumulative sum fonction to buy and sell a stock with the condition, only sell if we have on stock """
         cumulative_sum = 0
         cumulative_sum_list = []
         self.shortlongdf.fillna(0, inplace=True)
@@ -87,9 +94,9 @@ class PortfolioModel:
 
 
     def cumsum_per_stock(self):
+        """cumsum for all stocks"""
         for col_name in self.shortlongdf.columns.to_list():
             self.cumulative_sum(col_name)
-        print(self.shortlongdf.head())
 
     def launch(self):
         self.read_data()
