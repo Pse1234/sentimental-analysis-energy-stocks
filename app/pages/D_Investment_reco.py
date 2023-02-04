@@ -81,7 +81,7 @@ results = results.reset_index(drop=False)
 results = results.rename(columns={'index': 'companies'})
 selected_stocks = results['companies'].isin(options)
 
-st.dataframe(selected_stocks)
+st.dataframe(results.loc[selected_stocks])
 
 # c1, c2, c3, c4 = st.columns(4)
 
