@@ -50,25 +50,25 @@ options = st.multiselect(
     key="macro_options",
 )
 
-min_date = strategy["month_invest"].min()
-max_date = strategy["month_invest"].max()
+# min_date = strategy["month_invest"].min()
+# max_date = strategy["month_invest"].max()
 
-# filter start date
-start_date = st.date_input(
-    "**Select a start date:**",
-    min_value=min_date,
-    max_value=max_date,
-    value=min_date,
-    key="start_date",
-)
-# filter end date
-end_date = st.date_input(
-    "**Select an end date:**",
-    min_value=min_date,
-    max_value=max_date,
-    value=max_date,
-    key="end_date",
-)
+# # filter start date
+# start_date = st.date_input(
+#     "**Select a start date:**",
+#     min_value=min_date,
+#     max_value=max_date,
+#     value=min_date,
+#     key="start_date",
+# )
+# # filter end date
+# end_date = st.date_input(
+#     "**Select an end date:**",
+#     min_value=min_date,
+#     max_value=max_date,
+#     value=max_date,
+#     key="end_date",
+# )
 
 # condition1 = start_date <= strategy["month_invest"]
 # condition2 = strategy["month_invest"] <= end_date
@@ -84,10 +84,10 @@ end_date = st.date_input(
 
 # st.dataframe(printing_results)
 
-# results = results.rename(columns={'Unnamed: 0': 'companies'})
-# results.fillna(0, inplace=True)
-# selected_stocks = results['companies'].isin(options)
-# results_selected = results.loc[selected_stocks]
+results = results.rename(columns={'Unnamed: 0': 'companies'})
+results.fillna(0, inplace=True)
+selected_stocks = results['companies'].isin(options)
+results_selected = results.loc[selected_stocks]
 
 if len(options)>0:
     c1, c2, c3, c4 = st.columns(4)
