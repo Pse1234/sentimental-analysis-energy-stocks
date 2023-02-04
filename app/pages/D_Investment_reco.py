@@ -51,8 +51,6 @@ options = st.multiselect(
     key="macro_options",
 )
 
-st.dataframe(returns)
-
 # min_date = strategy["month_invest"].min()
 # max_date = strategy["month_invest"].max()
 
