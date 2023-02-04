@@ -17,7 +17,7 @@ def load_predicted_data():
     strategy = pd.read_csv("./data/data_model/todo.csv",)
     returns = pd.read_csv("./data/stocks_data.csv",)
     returns = returns.rename(columns=returns.iloc[0])
-    # returns = returns.iloc[2:]
+    returns = returns.iloc[2:]
     # upercase = lambda x: str(x).upper()
     # returns.rename(upercase, axis="columns", inplace=True)
     # returns.reset_index(inplace=True)
