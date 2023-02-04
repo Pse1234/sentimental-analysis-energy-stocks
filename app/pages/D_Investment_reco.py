@@ -38,12 +38,12 @@ def load_predicted_data():
     #     + "-"
     #     + returns["month"].astype(str).str.zfill(2)
     # )
-    
 
     return results, strategy, returns
 
 results, strategy, returns = load_predicted_data()
 
+st.write(returns.columns)
 strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
 strategy['month_invest'] = pd.to_datetime(strategy['month_invest']).dt.date
 
