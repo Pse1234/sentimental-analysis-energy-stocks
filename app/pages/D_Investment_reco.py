@@ -22,6 +22,7 @@ def load_data():
     return returns
 
 results, strategy = load_predicted_data()
+returns = load_data_()
 strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
 strategy['month_invest'] = pd.to_datetime(strategy['month_invest']).dt.date
 
