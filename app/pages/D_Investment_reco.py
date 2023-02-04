@@ -84,20 +84,20 @@ c1, c2, c3, c4 = st.columns(4)
 
 with c1:
     st.metric(
-        label=f"Investment recommendation on the portfolio:",
+        label=f"Investment recommendation:",
         value=str(round(results_selected["total_investment"].sum(), 2)),
     )
 
 with c2:
     st.metric(
-        label=f"Return of the recommended investment:",
+        label=f"Return on investment:",
         value=str(round(results_selected["total_return"].sum()*100, 2)
         ) + "%"
     )
 
 with c3:
     st.metric(
-        label=f"Percentage of benefice or loss generated with our strategy:",
+        label=f"Benefice of our strategy:",
         value=str(
             round(results_selected["relative_return_pct"].mean()*100, 2)
         ) + "%"
@@ -105,7 +105,7 @@ with c3:
 
 with c4:
     st.metric(
-        label=f"Percentage of benefice or loss generated with an equipondered portfolio:",
+        label=f"Benefice of market:",
         value=str(
             round(results_selected["to_compare_with_based"].mean()*100, 2)
         ) + "%"
