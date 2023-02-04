@@ -20,12 +20,12 @@ def load_predicted_data():
     returns = returns.iloc[2:]
     upercase = lambda x: str(x).upper()
     returns.rename(upercase, axis="columns", inplace=True)
-    # returns.reset_index(inplace=True)
-    # returns.rename(
-    #     columns={"level_0": "DATE1", "level_1": "DATE"}, inplace=True
-    # )
-    # returns.drop(columns="DATE1", inplace=True)
-    # returns["DATE"] = pd.to_datetime(returns["DATE"]).dt.date
+    returns.reset_index(inplace=True)
+    returns.rename(
+        columns={"UNNAMED:2_LEVEL_0": "DATE1", "UNNAMED:2_LEVEL_1": "DATE"}, inplace=True
+    )
+    returns.drop(columns="DATE1", inplace=True)
+    returns["DATE"] = pd.to_datetime(returns["DATE"]).dt.date
     return results, strategy, returns
 
 
