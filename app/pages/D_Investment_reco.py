@@ -28,16 +28,16 @@ def load_predicted_data():
     except_column = "DATE"
     returns.fillna(0, inplace=True)
     selected_columns = [col for col in returns.columns if col != except_column]
-    # result = returns[selected_columns].apply(lambda x: x / 100 + 1, axis=1)
-    # returns = pd.concat([returns[except_column], result], axis=1)
-    # returns["DATE"] = pd.to_datetime(returns["DATE"])
-    # returns["year"] = returns["DATE"].dt.year
-    # returns["month"] = returns["DATE"].dt.month
-    # returns["yearmonth"] = (
-    #     returns["year"].astype(str)
-    #     + "-"
-    #     + returns["month"].astype(str).str.zfill(2)
-    # )
+    result = returns[selected_columns].apply(lambda x: x / 100 + 1, axis=1)
+    returns = pd.concat([returns[except_column], result], axis=1)
+    returns["DATE"] = pd.to_datetime(returns["DATE"])
+    returns["year"] = returns["DATE"].dt.year
+    returns["month"] = returns["DATE"].dt.month
+    returns["yearmonth"] = (
+        returns["year"].astype(str)
+        + "-"
+        + returns["month"].astype(str).str.zfill(2)
+    )
     
 
     return results, strategy, returns
