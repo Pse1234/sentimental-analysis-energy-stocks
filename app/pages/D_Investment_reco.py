@@ -26,7 +26,6 @@ returns = load_data()
 strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
 strategy['month_invest'] = pd.to_datetime(strategy['month_invest']).dt.date
 
-
 stocklist = [
     "BP PLC",
     "FMC CORP",
@@ -52,31 +51,33 @@ options = st.multiselect(
     key="macro_options",
 )
 
-# min_date = strategy["month_invest"].min()
-# max_date = strategy["month_invest"].max()
+min_date = strategy["month_invest"].min()
+max_date = strategy["month_invest"].max()
 
-# # filter start date
-# start_date = st.date_input(
-#     "**Select a start date:**",
-#     min_value=min_date,
-#     max_value=max_date,
-#     value=min_date,
-#     key="start_date",
-# )
-# # filter end date
-# end_date = st.date_input(
-#     "**Select an end date:**",
-#     min_value=min_date,
-#     max_value=max_date,
-#     value=max_date,
-#     key="end_date",
-# )
+# filter start date
+start_date = st.date_input(
+    "**Select a start date:**",
+    min_value=min_date,
+    max_value=max_date,
+    value=min_date,
+    key="start_date",
+)
+# filter end date
+end_date = st.date_input(
+    "**Select an end date:**",
+    min_value=min_date,
+    max_value=max_date,
+    value=max_date,
+    key="end_date",
+)
 
-# condition1 = start_date <= strategy["month_invest"]
-# condition2 = strategy["month_invest"] <= end_date
-# mask = condition1 & condition2
-# filtered_investment = strategy.loc[mask, :]
+condition1 = start_date <= strategy["month_invest"]
+condition2 = strategy["month_invest"] <= end_date
+mask = condition1 & condition2
+filtered_investment = strategy.loc[mask, :]
 
+st.dataframe(returns)
+st.dataframe(filtered_investment)
 # printing_results = pd.DataFrame()
 # for col in stocklist:
 #     printing_results.loc[col, 'total_investment'] = filtered_investment[filtered_investment[col] > 0][col].sum()
