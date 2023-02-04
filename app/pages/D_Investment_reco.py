@@ -2,15 +2,6 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 
-# Global Variables
-DATE_COLUMN = "DATE"
-DATA_PATH = "./data/stocks_data.xlsx"
-TWEETS_PREDICTED_PATH = [
-    "./data/data_model/webscraped_FMC_CORP.csv",
-    "./data/data_model/webscraped_WEYERHAEUSER_CO.csv",
-    "./data/data_model/webscraped_BP_PLC.csv",
-]
-
 # Layout
 twt_logo = Image.open('app/images/twitter-logo.png')
 st.set_page_config(
@@ -22,7 +13,7 @@ st.header("Long or Short stocks")
 
 @st.cache
 def load_predicted_data():
-    results = pd.read_csv("./data/data_model/all_data.csv",)
+    results = pd.read_csv("./data/data_model/results.csv",)
     return results
 
 
