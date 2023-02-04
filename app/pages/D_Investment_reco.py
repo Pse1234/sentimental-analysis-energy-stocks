@@ -97,7 +97,7 @@ with c3:
         label=f"Percentage of benefice or loss generated with our strategy:",
         value=str(
             round(results["relative_return_pct"].mean()*100)
-        ),
+        ),%
     )
 
 with c4:
@@ -105,5 +105,5 @@ with c4:
         label=f"Percentage of benefice or loss generated with an equipondered portfolio:",
         value=str(
             round(results["to_compare_with_based"].mean()*100)
-        ),
+        ),%
     )
