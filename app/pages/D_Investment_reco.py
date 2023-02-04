@@ -16,7 +16,7 @@ def load_predicted_data():
     results = pd.read_csv("./data/data_model/results.csv",)
     strategy = pd.read_csv("./data/data_model/todo.csv",)
     return results, strategy
-@st.cache
+
 def load_data():
     returns = pd.read_excel("./data/stocks_data.xlsx", sheet_name="Returns", header=[5, 6]).T.iloc[2:, :]
     return returns
