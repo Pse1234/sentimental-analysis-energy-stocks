@@ -17,8 +17,9 @@ def load_predicted_data():
     strategy = pd.read_csv("./data/data_model/todo.csv",)
     return results, strategy
 
-
 results, strategy = load_predicted_data()
+strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
+strategy['month_invest'] = pd.to_datetime(strategy['month_invest'])
 
 stocklist = [
     "BP PLC",
@@ -45,30 +46,37 @@ options = st.multiselect(
     key="macro_options",
 )
 
-# min_date = tweets["PostDate"].min()
-# max_date = tweets["PostDate"].max()
+min_date = strategy["month_invest"].min()
+max_date = strategy["month_invest"].max()
 
-# # filter start date
-# start_date = st.date_input(
-#     "**Select a start date:**",
-#     min_value=min_date,
-#     max_value=max_date,
-#     value=min_date,
-#     key="start_date",
-# )
-# # filter end date
-# end_date = st.date_input(
-#     "**Select an end date:**",
-#     min_value=min_date,
-#     max_value=max_date,
-#     value=max_date,
-#     key="end_date",
-# )
+# filter start date
+start_date = st.date_input(
+    "**Select a start date:**",
+    min_value=min_date,
+    max_value=max_date,
+    value=min_date,
+    key="start_date",
+)
+# filter end date
+end_date = st.date_input(
+    "**Select an end date:**",
+    min_value=min_date,
+    max_value=max_date,
+    value=max_date,
+    key="end_date",
+)
 
-# condition1 = start_date <= tweets["PostDate"]
-# condition2 = tweets["PostDate"] <= end_date
-# mask = condition1 & condition2
-# filtered_tweets = tweets.loc[mask, :]
+condition1 = start_date <= tweets["PostDate"]
+condition2 = tweets["PostDate"] <= end_date
+mask = condition1 & condition2
+filtered_tweets = tweets.loc[mask, :]
+
+printing_results = pd.DataFrame()
+for col in stocklist:
+    printing_results.loc[col, 'total_investment'] = strategy[strategy[col] > 0][col].sum()
+    printing_results.loc[col, 'total_return'] = strategy[col+'_cumulative_sum'].sum()
+    printing_results.loc[col, 'market_results'] = strategy[search_dictio.get(col).upper()].prod() -1
+printing_results['strategy_results'] = printing_results['total_return'] / printing_results['total_investment']
 
 # mask = filtered_tweets["company"].isin(options)
 # filtered_tweets = filtered_tweets.loc[mask, :]
@@ -79,7 +87,7 @@ options = st.multiselect(
 # tweet_string = " ".join(tweet_list)
 
 
-strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
+
 st.dataframe(strategy)
 
 results = results.rename(columns={'Unnamed: 0': 'companies'})
