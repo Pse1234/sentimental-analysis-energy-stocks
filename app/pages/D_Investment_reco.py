@@ -66,27 +66,17 @@ end_date = st.date_input(
     key="end_date",
 )
 
-condition1 = start_date <= tweets["PostDate"]
-condition2 = tweets["PostDate"] <= end_date
-mask = condition1 & condition2
-filtered_tweets = tweets.loc[mask, :]
+# condition1 = start_date <= tweets["PostDate"]
+# condition2 = tweets["PostDate"] <= end_date
+# mask = condition1 & condition2
+# filtered_tweets = tweets.loc[mask, :]
 
-printing_results = pd.DataFrame()
-for col in stocklist:
-    printing_results.loc[col, 'total_investment'] = strategy[strategy[col] > 0][col].sum()
-    printing_results.loc[col, 'total_return'] = strategy[col+'_cumulative_sum'].sum()
-    printing_results.loc[col, 'market_results'] = strategy[search_dictio.get(col).upper()].prod() -1
-printing_results['strategy_results'] = printing_results['total_return'] / printing_results['total_investment']
-
-# mask = filtered_tweets["company"].isin(options)
-# filtered_tweets = filtered_tweets.loc[mask, :]
-
-# # we select all the tweets from 2017 to 2022
-# tweet_list = filtered_tweets["TweetText"].tolist()
-# # join all tweets into a single string
-# tweet_string = " ".join(tweet_list)
-
-
+# printing_results = pd.DataFrame()
+# for col in stocklist:
+#     printing_results.loc[col, 'total_investment'] = strategy[strategy[col] > 0][col].sum()
+#     printing_results.loc[col, 'total_return'] = strategy[col+'_cumulative_sum'].sum()
+#     printing_results.loc[col, 'market_results'] = strategy[search_dictio.get(col).upper()].prod() -1
+# printing_results['strategy_results'] = printing_results['total_return'] / printing_results['total_investment']
 
 st.dataframe(strategy)
 
