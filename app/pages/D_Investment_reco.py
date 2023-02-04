@@ -98,7 +98,7 @@ with c3:
     st.metric(
         label=f"Percentage of benefice or loss generated with our strategy:",
         value=str(
-            round(results_selected["relative_return_pct"].mean()*100)
+            round(results_selected["relative_return_pct"].mean()*100, 2)
         ) + "%"
     )
 
@@ -106,6 +106,6 @@ with c4:
     st.metric(
         label=f"Percentage of benefice or loss generated with an equipondered portfolio:",
         value=str(
-            round(results_selected["to_compare_with_based"].mean()*100)
+            round(results_selected["to_compare_with_based"].mean()*100, 2)
         ) + "%"
     )
