@@ -85,7 +85,7 @@ results.fillna(0, inplace=True)
 selected_stocks = results['companies'].isin(options)
 results_selected = results.loc[selected_stocks]
 
-if len(options)>1:
+if len(options)>0:
     c1, c2, c3, c4 = st.columns(4)
 
     with c1:
