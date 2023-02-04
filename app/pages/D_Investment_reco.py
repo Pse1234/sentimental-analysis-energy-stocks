@@ -14,10 +14,11 @@ st.header("Long or Short stocks")
 @st.cache
 def load_predicted_data():
     results = pd.read_csv("./data/data_model/results.csv",)
-    return results
+    strategy = pd.read_csv("./data/data_model/todo.csv",)
+    return results, strategy
 
 
-results = load_predicted_data()
+results, strategy = load_predicted_data()
 
 stocklist = [
     "BP PLC",
@@ -76,6 +77,9 @@ options = st.multiselect(
 # tweet_list = filtered_tweets["TweetText"].tolist()
 # # join all tweets into a single string
 # tweet_string = " ".join(tweet_list)
+
+st.dataframe(strategy)
+
 results = results.rename(columns={'Unnamed: 0': 'companies'})
 results.fillna(0, inplace=True)
 st.dataframe(results)

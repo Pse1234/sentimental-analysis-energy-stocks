@@ -173,6 +173,7 @@ class PortfolioModel:
         self.printing_results['strategy_results'] = self.printing_results['total_return'] / self.printing_results['total_investment']
         
         self.printing_results.to_csv("./../../data/data_model/results.csv")
+        self.shortlongdf.to_csv("./../../data/data_model/todo.csv")
 
     def launch(self):
         # reading returns and analyse data NLP
