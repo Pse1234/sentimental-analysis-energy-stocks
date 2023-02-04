@@ -20,7 +20,6 @@ def load_predicted_data():
     returns = returns.iloc[2:]
     upercase = lambda x: str(x).upper()
     returns.rename(upercase, axis="columns", inplace=True)
-    returns.reset_index(inplace=True)
     returns.rename(
         columns={"UNNAMED: 2_LEVEL_0": "DATE1", "UNNAMED: 2_LEVEL_1": "DATE"}, inplace=True
     )
