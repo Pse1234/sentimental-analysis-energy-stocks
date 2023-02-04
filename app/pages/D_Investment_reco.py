@@ -88,7 +88,8 @@ for col in stocklist:
     printing_results.loc[col, 'total_return'] = filtered_investment[col+'_cumulative_sum'].sum()
     # printing_results.loc[col, 'market_results'] = returns[search_dictio.get(col).upper()].prod() - 1
 printing_results['strategy_results'] = printing_results['total_return'] / printing_results['total_investment']
-
+st.dataframe(returns)
+st.write(search_dictio)
 st.dataframe(printing_results)
 
 results = results.rename(columns={'Unnamed: 0': 'companies'})
