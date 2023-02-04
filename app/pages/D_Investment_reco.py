@@ -112,3 +112,5 @@ with c4:
             round(results_selected["to_compare_with_based"].mean()*100, 2)
         ) + "%"
     )
+
+st.write("You are maybe wondering when and how much do you have to invest. Then look at the next dataframe:")
