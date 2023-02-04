@@ -29,8 +29,8 @@ def load_predicted_data():
     returns.fillna(0, inplace=True)
     col_list = returns.columns.tolist()
     selected_columns = [col for col in col_list if col != except_column]
-    result = returns[selected_columns].apply(lambda x: x / 100 + 1, axis=1)
-    returns = pd.concat([returns[except_column], result], axis=1)
+    # result = returns[selected_columns].apply(lambda x: x / 100 + 1, axis=1)
+    # returns = pd.concat([returns[except_column], result], axis=1)
     # returns["DATE"] = pd.to_datetime(returns["DATE"])
     # returns["year"] = returns["DATE"].dt.year
     # returns["month"] = returns["DATE"].dt.month
@@ -40,13 +40,14 @@ def load_predicted_data():
     #     + returns["month"].astype(str).str.zfill(2)
     # )
 
-    return results, strategy, returns
+    return results, strategy, returns, selected_columns
 
-results, strategy, returns = load_predicted_data()
+results, strategy, returns, selected_columns = load_predicted_data()
 
 strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
 strategy['month_invest'] = pd.to_datetime(strategy['month_invest']).dt.date
 
+st.write(selected_columns)
 stocklist = [
     "BP PLC",
     "FMC CORP",
