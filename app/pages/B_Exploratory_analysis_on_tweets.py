@@ -16,7 +16,7 @@ from PIL import Image
 DATE_COLUMN = "DATE"
 DATA_PATH = "./data/stocks_data.xlsx"
 TWEETS_PATH = [
-    "./data/data_cleaned/webscraped_BP_PLC/part-00000-9169fe3a-444e-45f7-8177-30b185180d90-c000.csv",
+    "./data/data_cleaned/webscraped_BP_PLC/part-00000-624ba115-e5ef-4814-bbab-b72bfb1a9217-c000",
     "./data/data_cleaned/webscraped_FMC_CORP/part-00000-ea27d81f-27be-4e5a-9cc2-88ccb53607a7-c000.csv",
     "./data/data_cleaned/webscraped_WEYERHAEUSER_CO/part-00000-5305ef13-248d-49c3-a77a-ae3f402be90c-c000.csv",
 ]
