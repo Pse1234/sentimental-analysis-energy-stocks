@@ -87,37 +87,41 @@ results.fillna(0, inplace=True)
 selected_stocks = results['companies'].isin(options)
 results_selected = results.loc[selected_stocks]
 
-c1, c2, c3, c4 = st.columns(4)
+if len(options)>1:
+    c1, c2, c3, c4 = st.columns(4)
 
-with c1:
-    st.metric(
-        label=f"Investment recommendation:",
-        value=str(round(results_selected["total_investment"].sum(), 2)),
-    )
+    with c1:
+        st.metric(
+            label=f"Investment recommendation:",
+            value=str(round(results_selected["total_investment"].sum(), 2)),
+        )
 
-with c2:
-    st.metric(
-        label=f"Return on investment:",
-        value=str(round(results_selected["total_return"].sum()*100, 2)
-        ) + "%"
-    )
+    with c2:
+        st.metric(
+            label=f"Return on investment:",
+            value=str(round(results_selected["total_return"].sum()*100, 2)
+            ) + "%"
+        )
 
-with c3:
-    st.metric(
-        label=f"Benefice of our strategy:",
-        value=str(
-            round(results_selected["strategy_results"].mean()*100, 2)
-        ) + "%"
-    )
+    with c3:
+        st.metric(
+            label=f"Benefice of our strategy:",
+            value=str(
+                round(results_selected["strategy_results"].mean()*100, 2)
+            ) + "%"
+        )
 
-with c4:
-    st.metric(
-        label=f"Benefice of market:",
-        value=str(
-            round(results_selected["market_results"].mean()*100, 2)
-        ) + "%"
-    )
+    with c4:
+        st.metric(
+            label=f"Benefice of market:",
+            value=str(
+                round(results_selected["market_results"].mean()*100, 2)
+            ) + "%"
+        )
 
-st.dataframe(results_selected)
+    st.dataframe(results_selected)
+
+else:
+    st.warning("Please select at least one stock to see the metrics.")
 
 st.write("You are maybe wondering when and how much do you have to invest. Then look at the next dataframe:")
