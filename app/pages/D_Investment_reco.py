@@ -78,6 +78,8 @@ options = st.multiselect(
 # # join all tweets into a single string
 # tweet_string = " ".join(tweet_list)
 
+
+strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
 st.dataframe(strategy)
 
 results = results.rename(columns={'Unnamed: 0': 'companies'})
