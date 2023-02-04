@@ -24,8 +24,8 @@ def load_predicted_data():
     returns.rename(
         columns={"UNNAMED:2_LEVEL_0": "DATE1", "UNNAMED:2_LEVEL_1": "DATE"}, inplace=True
     )
-    returns.drop(columns="DATE1", inplace=True)
-    returns["DATE"] = pd.to_datetime(returns["DATE"]).dt.date
+    # returns.drop(columns="DATE1", inplace=True)
+    # returns["DATE"] = pd.to_datetime(returns["DATE"]).dt.date
     return results, strategy, returns
 
 
