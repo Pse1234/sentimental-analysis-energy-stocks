@@ -83,6 +83,7 @@ mask = condition1 & condition2
 filtered_investment = strategy.loc[mask, :]
 
 printing_results = pd.DataFrame()
+st.dataframe(returns)
 for col in stocklist:
     printing_results.loc[col, 'total_investment'] = filtered_investment[filtered_investment[col] > 0][col].sum()
     printing_results.loc[col, 'total_return'] = filtered_investment[col+'_cumulative_sum'].sum()
