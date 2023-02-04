@@ -172,7 +172,7 @@ class PortfolioModel:
             self.printing_results.loc[col, 'to_compare_with_based'] = self.returns[self.search_dictio.get(col).upper()].prod()
         self.printing_results['relative_return_pct'] = self.printing_results['total_return'] / self.printing_results['total_investment']
         
-        print(self.printing_results)
+        self.printing_results.to_csv("./../../data/data_model/results.csv")
 
     def launch(self):
         # reading returns and analyse data NLP
