@@ -109,3 +109,33 @@ filtered_tweets = filtered_tweets.loc[mask, :]
 tweet_list = filtered_tweets["TweetText"].tolist()
 # join all tweets into a single string
 tweet_string = " ".join(tweet_list)
+
+c1, c2, c3, c4 = st.columns(4)
+
+with c1:
+    st.metric(
+        label=f"Investment recommendation on the portfolio:",
+        value=str(filtered_tweets[filtered_tweets["sentiment"] == "Bullish"].shape[0]),
+    )
+
+with c2:
+    st.metric(
+        label=f"Return of the recommended investment:",
+        value=str(filtered_tweets[filtered_tweets["sentiment"] == "Bearish"].shape[0]),
+    )
+
+with c3:
+    st.metric(
+        label=f"Percentage of benefice or loss generated with our strategy:",
+        value=str(
+            filtered_tweets[filtered_tweets["sentiment_base"] == "positive"].shape[0]
+        ),
+    )
+
+with c4:
+    st.metric(
+        label=f"Percentage of benefice or loss generated with an equipondered portfolio:",
+        value=str(
+            filtered_tweets[filtered_tweets["sentiment_base"] == "negative"].shape[0]
+        ),
+    )
