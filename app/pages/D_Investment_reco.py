@@ -84,7 +84,6 @@ st.dataframe(strategy)
 
 results = results.rename(columns={'Unnamed: 0': 'companies'})
 results.fillna(0, inplace=True)
-st.dataframe(results)
 selected_stocks = results['companies'].isin(options)
 results_selected = results.loc[selected_stocks]
 
@@ -118,5 +117,7 @@ with c4:
             round(results_selected["market_results"].mean()*100, 2)
         ) + "%"
     )
+
+st.dataframe(results_selected)
 
 st.write("You are maybe wondering when and how much do you have to invest. Then look at the next dataframe:")
