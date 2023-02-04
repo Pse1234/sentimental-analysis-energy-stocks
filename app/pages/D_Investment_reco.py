@@ -77,38 +77,36 @@ options = st.multiselect(
 # # join all tweets into a single string
 # tweet_string = " ".join(tweet_list)
 results = results.rename(columns={'Unnamed: 0': 'companies'})
-
-st.dataframe(results)
 selected_stocks = results['companies'].isin(options)
 
 st.dataframe(results.loc[selected_stocks])
 
-# c1, c2, c3, c4 = st.columns(4)
+c1, c2, c3, c4 = st.columns(4)
 
-# # with c1:
-# #     st.metric(
-# #         label=f"Investment recommendation on the portfolio:",
-# #         value=str(results[results["sentiment"] == "Bullish"].shape[0]),
-# #     )
-
-# # with c2:
-# #     st.metric(
-# #         label=f"Return of the recommended investment:",
-# #         value=str(filtered_tweets[filtered_tweets["sentiment"] == "Bearish"].shape[0]),
-# #     )
-
-# with c3:
+# with c1:
 #     st.metric(
-#         label=f"Percentage of benefice or loss generated with our strategy:",
-#         value=str(
-#             round(results.loc[selected_stocks, "relative_return_pct"].mean()*100)
-#         ) + "%"
+#         label=f"Investment recommendation on the portfolio:",
+#         value=str(results[results["sentiment"] == "Bullish"].shape[0]),
 #     )
 
-# with c4:
+# with c2:
 #     st.metric(
-#         label=f"Percentage of benefice or loss generated with an equipondered portfolio:",
-#         value=str(
-#             round(results.loc[selected_stocks, "to_compare_with_based"].mean()*100)
-#         ) + "%"
+#         label=f"Return of the recommended investment:",
+#         value=str(filtered_tweets[filtered_tweets["sentiment"] == "Bearish"].shape[0]),
 #     )
+
+with c3:
+    st.metric(
+        label=f"Percentage of benefice or loss generated with our strategy:",
+        value=str(
+            round(results.loc[selected_stocks, "relative_return_pct"].mean()*100)
+        ) + "%"
+    )
+
+with c4:
+    st.metric(
+        label=f"Percentage of benefice or loss generated with an equipondered portfolio:",
+        value=str(
+            round(results.loc[selected_stocks, "to_compare_with_based"].mean()*100)
+        ) + "%"
+    )
