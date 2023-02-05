@@ -44,7 +44,7 @@ def load_predicted_data():
 
 results, strategy, returns, selected_columns = load_predicted_data()
 
-st.write(returns.info().tolist())
+st.dataframe(returns[selected_columns])
 
 strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
 strategy['month_invest'] = pd.to_datetime(strategy['month_invest']).dt.date
