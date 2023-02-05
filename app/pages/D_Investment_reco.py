@@ -47,7 +47,8 @@ results, strategy, returns, selected_columns = load_predicted_data()
 strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
 strategy['month_invest'] = pd.to_datetime(strategy['month_invest']).dt.date
 
-st.write(selected_columns)
+st.write(returns.info())
+
 stocklist = [
     "BP PLC",
     "FMC CORP",
