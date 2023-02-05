@@ -106,6 +106,12 @@ df_columns_list = [
     "BP/ LN Equity",
     "FMC US Equity",
     "WY US Equity",
+    "ALA CT Equity",
+    "BHP US Equity",
+    "IP US Equity",
+    "S5ENRS Index",
+    "STERV FH Equity",
+    "WIL SP Equity",
 ]
 
 search_dictio = {}
