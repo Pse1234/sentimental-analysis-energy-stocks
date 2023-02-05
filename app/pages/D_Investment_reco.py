@@ -149,4 +149,5 @@ else:
 
 st.write("You are maybe wondering when and how much do you have to invest. Then look at the next dataframe:")
 
+filtered_investment = filtered_investment.rename(columns=lambda x: x.replace('_cumulative_sum', ' stock') if x.endswith('_cumulative_sum') else x)
 st.dataframe(filtered_investment)
