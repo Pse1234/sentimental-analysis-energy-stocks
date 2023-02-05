@@ -30,19 +30,19 @@ def load_predicted_data():
     returns[selected_columns] = returns[selected_columns].astype(float)
     result = returns[selected_columns].apply(lambda x: x / 100 + 1, axis=1)
     returns = pd.concat([returns[except_column], result], axis=1)
-    # returns["DATE"] = pd.to_datetime(returns["DATE"])
-    # returns["year"] = returns["DATE"].dt.year
-    # returns["month"] = returns["DATE"].dt.month
-    # returns["yearmonth"] = (
-    #     returns["year"].astype(str)
-    #     + "-"
-    #     + returns["month"].astype(str).str.zfill(2)
-    # )
+    returns["DATE"] = pd.to_datetime(returns["DATE"])
+    returns["year"] = returns["DATE"].dt.year
+    returns["month"] = returns["DATE"].dt.month
+    returns["yearmonth"] = (
+        returns["year"].astype(str)
+        + "-"
+        + returns["month"].astype(str).str.zfill(2)
+    )
 
     return strategy, returns
 
 strategy, returns = load_predicted_data()
-st.dataframe(returns)
+
 st.dataframe(strategy)
 strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
 strategy['month_invest'] = pd.to_datetime(strategy['month_invest']).dt.date
