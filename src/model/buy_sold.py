@@ -14,9 +14,9 @@ class PortfolioModel:
 
     def formatting(self) -> None:
         """Formatting the dates and encoding sentiment columns positive or bullish -> 1, negative or bearish -> -1, neutral -> 0"""
-        self.df["PostDate"] = pandas.to_datetime(
-            self.df["PostDate"].apply(lambda x: x[:-3])
-        )
+
+        self.df["PostDate"] = self.df["PostDate"].astype(str).apply(lambda x: x[:-3])
+        self.df["PostDate"] = pandas.to_datetime(self.df["PostDate"])
 
         # add a column for the year and month
         self.df["year"] = self.df["PostDate"].dt.year
@@ -149,18 +149,30 @@ class PortfolioModel:
             "BP PLC",
             "FMC CORP",
             "WEYERHAEUSER CO",
+            "ALTAGAS LTD",
+            "BHP GROUP",
+            "INTERNATIONAL PAPER CO",
+            "S&P 500 ENERGY INDEX",
+            "STORA ENSO",
+            "WILMAR INTERNATIONAL LTD",
         ]
 
         self.df_columns_list = [
             "BP/ LN Equity",
             "FMC US Equity",
             "WY US Equity",
+            "ALA CT Equity",
+            "BHP US Equity",
+            "IP US Equity",
+            "S5ENRS Index",
+            "STERV FH Equity",
+            "WIL SP Equity",
         ]
 
         self.search_dictio = {}
         for i, k in enumerate(self.df_columns_list):
             self.search_dictio[self.stocklist[i]] = k
-        
+
         for col_name in self.shortlongdf.columns.to_list():
             self.calculating_stock(col_name, stock_name = self.search_dictio.get(col_name).upper())
 
