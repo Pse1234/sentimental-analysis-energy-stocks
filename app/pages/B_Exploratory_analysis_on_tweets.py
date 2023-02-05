@@ -23,7 +23,7 @@ TWEETS_PATH = [
     "./data/data_cleaned/webscraped_INTERNATIONAL_PAPER_CO/part-00000-d86fb744-c8ac-41a3-ad2b-6706f75f5abd-c000.csv",
     "./data/data_cleaned/webscraped_STORA_ENSO/part-00000-d8bcad1c-da20-44e1-857c-50bbfd37d66b-c000.csv",
     "./data/data_cleaned/webscraped_WILMAR_INTERNATIONAL_LTD/part-00000-4ab531e0-1dbd-46e2-a9d5-6102930b494f-c000.csv",
-    "./data/data_cleaned/webscraped_S\&P_500_ENERGY_INDEX/part-00000-30e199c7-87e1-4788-81bb-39b48a1df96e-c000.csv",
+    "./data/data_cleaned/webscraped_S&P_500_ENERGY_INDEX/part-00000-30e199c7-87e1-4788-81bb-39b48a1df96e-c000.csv",
 ]
 
 nltk.download('stopwords')
