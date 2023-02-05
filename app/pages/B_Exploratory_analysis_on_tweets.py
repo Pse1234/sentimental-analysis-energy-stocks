@@ -3,11 +3,9 @@ import streamlit as st
 import pandas as pd
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
-import nltk
 import seaborn as sns
 import plotly.express as px
 from collections import Counter
-import numpy as np
 from nltk.corpus import stopwords
 from PIL import Image
 
