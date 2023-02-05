@@ -50,24 +50,24 @@ stocklist = [
     "BP PLC",
     "FMC CORP",
     "WEYERHAEUSER CO",
-    "ALTAGAS LTD",
-    "BHP GROUP LTD-SPON ADR",
-    "INTERNATIONAL PAPER CO",
-    "S&P 500 ENERGY INDEX",
-    "STORA ENSO OYJ-R SHS",
-    "WILMAR INTERNATIONAL LTD",
+    # "ALTAGAS LTD",
+    # "BHP GROUP LTD-SPON ADR",
+    # "INTERNATIONAL PAPER CO",
+    # "S&P 500 ENERGY INDEX",
+    # "STORA ENSO OYJ-R SHS",
+    # "WILMAR INTERNATIONAL LTD",
 ]
 
 df_columns_list = [
     "BP/ LN Equity",
     "FMC US Equity",
     "WY US Equity",
-    "ALA CT Equity",
-    "BHP US Equity",
-    "IP US Equity",
-    "S5ENRS Index",
-    "STERV FH Equity",
-    "WIL SP Equity",
+    # "ALA CT Equity",
+    # "BHP US Equity",
+    # "IP US Equity",
+    # "S5ENRS Index",
+    # "STERV FH Equity",
+    # "WIL SP Equity",
 ]
 
 search_dictio = {}
