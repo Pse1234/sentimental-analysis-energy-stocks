@@ -60,7 +60,7 @@ def load_data():
     bp_tweets["company"] = "BP PLC"
     # we add altagas webscrapped data
     altagas = pd.read_csv(TWEETS_PATH[3])
-    altagas["company"] = "ALTAGAS LTD"
+    altagas["company"] = "ALTAGAS"
     # # we add bhp webscrapped data
     # bhp = pd.read_csv(TWEETS_PATH[4])
     # bhp["company"] = "BHP GROUP LTD-SPON ADR"
