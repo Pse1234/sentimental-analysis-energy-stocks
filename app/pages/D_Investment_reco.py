@@ -13,7 +13,6 @@ st.header("Long or Short stocks")
 
 @st.cache(suppress_st_warning=True)
 def load_predicted_data():
-    results = pd.read_csv("./data/data_model/results.csv",)
     strategy = pd.read_csv("./data/data_model/todo.csv",)
     returns = pd.read_csv("./data/stocks_data.csv",)
     returns = returns.rename(columns=returns.iloc[0])
@@ -40,9 +39,9 @@ def load_predicted_data():
         + returns["month"].astype(str).str.zfill(2)
     )
 
-    return results, strategy, returns, selected_columns
+    return strategy, returns, selected_columns
 
-results, strategy, returns, selected_columns = load_predicted_data()
+strategy, returns, selected_columns = load_predicted_data()
 
 strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
 strategy['month_invest'] = pd.to_datetime(strategy['month_invest']).dt.date
@@ -111,8 +110,6 @@ printing_results.fillna(0, inplace=True)
 selected_stocks = printing_results['companies'].isin(options)
 printing_results = printing_results.loc[selected_stocks]
 
-st.dataframe(printing_results)
-
 if len(options)>0:
     c1, c2, c3, c4 = st.columns(4)
 
@@ -151,3 +148,4 @@ else:
     st.warning("Please select at least one stock to see the metrics.")
 
 st.write("You are maybe wondering when and how much do you have to invest. Then look at the next dataframe:")
+
