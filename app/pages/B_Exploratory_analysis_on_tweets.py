@@ -58,26 +58,26 @@ def load_data():
     # we add bp webscrapped data
     bp_tweets = pd.read_csv(TWEETS_PATH[2])
     bp_tweets["company"] = "BP PLC"
-    # we add altagas webscrapped data
-    altagas = pd.read_csv(TWEETS_PATH[3])
-    altagas["company"] = "ALTAGAS LTD"
-    # we add bhp webscrapped data
-    bhp = pd.read_csv(TWEETS_PATH[4])
-    bhp["company"] = "BHP GROUP LTD-SPON ADR"
-    # we add inter_paper webscrapped data
-    inter_paper = pd.read_csv(TWEETS_PATH[5])
-    inter_paper["company"] = "INTERNATIONAL PAPER CO"
-    # we add syp webscrapped data
-    syp = pd.read_csv(TWEETS_PATH[8])
-    syp["company"] = "S&P 500 ENERGY INDEX"
-    # we add syp webscrapped data
-    stora = pd.read_csv(TWEETS_PATH[6])
-    stora["company"] = "STORA ENSO OYJ-R SHS"
-    # we add syp webscrapped data
-    wilmar = pd.read_csv(TWEETS_PATH[7])
-    wilmar["company"] = "WILMAR INTERNATIONAL LTD"
+    # # we add altagas webscrapped data
+    # altagas = pd.read_csv(TWEETS_PATH[3])
+    # altagas["company"] = "ALTAGAS LTD"
+    # # we add bhp webscrapped data
+    # bhp = pd.read_csv(TWEETS_PATH[4])
+    # bhp["company"] = "BHP GROUP LTD-SPON ADR"
+    # # we add inter_paper webscrapped data
+    # inter_paper = pd.read_csv(TWEETS_PATH[5])
+    # inter_paper["company"] = "INTERNATIONAL PAPER CO"
+    # # we add syp webscrapped data
+    # syp = pd.read_csv(TWEETS_PATH[8])
+    # syp["company"] = "S&P 500 ENERGY INDEX"
+    # # we add syp webscrapped data
+    # stora = pd.read_csv(TWEETS_PATH[6])
+    # stora["company"] = "STORA ENSO OYJ-R SHS"
+    # # we add syp webscrapped data
+    # wilmar = pd.read_csv(TWEETS_PATH[7])
+    # wilmar["company"] = "WILMAR INTERNATIONAL LTD"
 
-    tweets = pd.concat([fmc_tweets, wy_tweets, bp_tweets, altagas, bhp, inter_paper, syp, stora, wilmar])
+    tweets = pd.concat([fmc_tweets, wy_tweets, bp_tweets])#, altagas, bhp, inter_paper, syp, stora, wilmar])
     tweets["PostDate"] = pd.to_datetime(tweets["PostDate"]).dt.date
     # we add a column with the length of each tweet
     tweets["tweet_length"] = tweets["TweetText"].apply(
