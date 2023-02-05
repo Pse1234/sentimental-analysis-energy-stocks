@@ -107,6 +107,7 @@ printing_results['strategy_results'] = printing_results['total_return'] / printi
 printing_results.reset_index(inplace=True)
 printing_results = printing_results.rename(columns={'index': 'companies'})
 printing_results.fillna(0, inplace=True)
+
 selected_stocks = printing_results['companies'].isin(options)
 printing_results = printing_results.loc[selected_stocks]
 
@@ -118,13 +119,13 @@ if len(options)>0:
     with c1:
         st.metric(
             label=f"Investment recommendation:",
-            value=str(round(results_selected["total_investment"].sum(), 2)),
+            value=str(round(printing_results["total_investment"].sum(), 2)),
         )
 
     with c2:
         st.metric(
             label=f"Return on investment:",
-            value=str(round(results_selected["total_return"].sum()*100, 2)
+            value=str(round(printing_results["total_return"].sum()*100, 2)
             ) + "%"
         )
 
@@ -132,7 +133,7 @@ if len(options)>0:
         st.metric(
             label=f"Benefice of our strategy:",
             value=str(
-                round(results_selected["strategy_results"].mean()*100, 2)
+                round(printing_results["strategy_results"].mean()*100, 2)
             ) + "%"
         )
 
@@ -140,11 +141,11 @@ if len(options)>0:
         st.metric(
             label=f"Benefice of market:",
             value=str(
-                round(results_selected["market_results"].mean()*100, 2)
+                round(printing_results["market_results"].mean()*100, 2)
             ) + "%"
         )
 
-    st.dataframe(results_selected)
+    st.dataframe(printing_results)
 
 else:
     st.warning("Please select at least one stock to see the metrics.")
