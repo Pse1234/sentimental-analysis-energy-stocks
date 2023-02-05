@@ -149,3 +149,4 @@ else:
 
 st.write("You are maybe wondering when and how much do you have to invest. Then look at the next dataframe:")
 
+st.dataframe(strategy)
