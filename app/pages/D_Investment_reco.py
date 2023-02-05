@@ -39,10 +39,9 @@ def load_predicted_data():
         + returns["month"].astype(str).str.zfill(2)
     )
 
-    return strategy, returns, selected_columns
+    return strategy, returns
 
-strategy, returns, selected_columns = load_predicted_data()
-st.write(selected_columns)
+strategy, returns = load_predicted_data()
 st.dataframe(returns)
 st.dataframe(strategy)
 strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
