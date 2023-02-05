@@ -58,9 +58,9 @@ def load_data():
     # we add bp webscrapped data
     bp_tweets = pd.read_csv(TWEETS_PATH[2])
     bp_tweets["company"] = "BP PLC"
-    # we add altagas webscrapped data
-    altagas = pd.read_csv(TWEETS_PATH[3])
-    altagas["company"] = "ALTAGAS"
+    # # we add altagas webscrapped data
+    # altagas = pd.read_csv(TWEETS_PATH[3])
+    # altagas["company"] = "ALTAGAS LTD"
     # # we add bhp webscrapped data
     # bhp = pd.read_csv(TWEETS_PATH[4])
     # bhp["company"] = "BHP GROUP LTD-SPON ADR"
@@ -94,7 +94,7 @@ stocklist = [
     "BP PLC",
     "FMC CORP",
     "WEYERHAEUSER CO",
-    "ALTAGAS LTD",
+    # "ALTAGAS LTD",
     # "BHP GROUP LTD-SPON ADR",
     # "INTERNATIONAL PAPER CO",
     # "S&P 500 ENERGY INDEX",
@@ -106,7 +106,7 @@ df_columns_list = [
     "BP/ LN Equity",
     "FMC US Equity",
     "WY US Equity",
-    "ALA CT Equity",
+    # "ALA CT Equity",
     # "BHP US Equity",
     # "IP US Equity",
     # "S5ENRS Index",
