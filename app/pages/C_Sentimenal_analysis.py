@@ -141,7 +141,7 @@ with c2:
 
 with c3:
     st.metric(
-        label=f"Number of tweets positives tweets:",
+        label=f"Number of positives tweets:",
         value=str(
             filtered_tweets[filtered_tweets["sentiment_base"] == "positive"].shape[0]
         ),
@@ -149,7 +149,7 @@ with c3:
 
 with c4:
     st.metric(
-        label=f"Number of tweets negatives tweets:",
+        label=f"Number of negatives tweets:",
         value=str(
             filtered_tweets[filtered_tweets["sentiment_base"] == "negative"].shape[0]
         ),
