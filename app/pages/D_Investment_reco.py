@@ -24,21 +24,21 @@ def load_predicted_data():
         columns={"UNNAMED: 2_LEVEL_0": "DATE1", "UNNAMED: 2_LEVEL_1": "DATE"}, inplace=True
     )
     returns.drop(columns="DATE1", inplace=True)
-
     except_column = "DATE"
     returns.fillna(0, inplace=True)
     col_list = returns.columns.tolist()
     selected_columns = [col for col in col_list if col != except_column]
-    # result = returns[selected_columns].apply(lambda x: x / 100 + 1, axis=1)
-    # returns = pd.concat([returns[except_column], result], axis=1)
-    # returns["DATE"] = pd.to_datetime(returns["DATE"])
-    # returns["year"] = returns["DATE"].dt.year
-    # returns["month"] = returns["DATE"].dt.month
-    # returns["yearmonth"] = (
-    #     returns["year"].astype(str)
-    #     + "-"
-    #     + returns["month"].astype(str).str.zfill(2)
-    # )
+    returns[selected_columns] = returns[selected_columns].astype(float)
+    result = returns[selected_columns].apply(lambda x: x / 100 + 1, axis=1)
+    returns = pd.concat([returns[except_column], result], axis=1)
+    returns["DATE"] = pd.to_datetime(returns["DATE"])
+    returns["year"] = returns["DATE"].dt.year
+    returns["month"] = returns["DATE"].dt.month
+    returns["yearmonth"] = (
+        returns["year"].astype(str)
+        + "-"
+        + returns["month"].astype(str).str.zfill(2)
+    )
 
     return results, strategy, returns, selected_columns
 
@@ -101,11 +101,9 @@ printing_results = pd.DataFrame()
 for col in stocklist:
     printing_results.loc[col, 'total_investment'] = filtered_investment[filtered_investment[col] > 0][col].sum()
     printing_results.loc[col, 'total_return'] = filtered_investment[col+'_cumulative_sum'].sum()
-    # printing_results.loc[col, 'market_results'] = returns[search_dictio.get(col).upper()].prod() - 1
-    st.write(returns[search_dictio.get(col).upper()])
+    printing_results.loc[col, 'market_results'] = returns[search_dictio.get(col).upper()].prod() - 1
 printing_results['strategy_results'] = printing_results['total_return'] / printing_results['total_investment']
-returns[selected_columns] = returns[selected_columns].astype(float)
-st.write(returns[selected_columns].dtypes)
+
 results = results.rename(columns={'Unnamed: 0': 'companies'})
 results.fillna(0, inplace=True)
 selected_stocks = results['companies'].isin(options)
