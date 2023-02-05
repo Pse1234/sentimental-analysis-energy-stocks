@@ -105,11 +105,12 @@ for col in stocklist:
 printing_results['strategy_results'] = printing_results['total_return'] / printing_results['total_investment']
 
 printing_results.reset_index(inplace=True)
+printing_results = printing_results.rename(columns={'index': 'companies'})
+printing_results.fillna(0, inplace=True)
+selected_stocks = printing_results['companies'].isin(options)
+printing_results = printing_results.loc[selected_stocks]
+
 st.dataframe(printing_results)
-results = results.rename(columns={'Unnamed: 0': 'companies'})
-results.fillna(0, inplace=True)
-selected_stocks = results['companies'].isin(options)
-results_selected = results.loc[selected_stocks]
 
 if len(options)>0:
     c1, c2, c3, c4 = st.columns(4)
