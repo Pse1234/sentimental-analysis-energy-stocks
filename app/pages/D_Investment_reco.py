@@ -104,6 +104,7 @@ for col in stocklist:
     printing_results.loc[col, 'market_results'] = returns[search_dictio.get(col).upper()].prod() - 1
 printing_results['strategy_results'] = printing_results['total_return'] / printing_results['total_investment']
 
+st.dataframe(printing_results)
 results = results.rename(columns={'Unnamed: 0': 'companies'})
 results.fillna(0, inplace=True)
 selected_stocks = results['companies'].isin(options)
