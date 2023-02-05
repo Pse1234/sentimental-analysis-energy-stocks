@@ -44,8 +44,6 @@ def load_predicted_data():
 
 results, strategy, returns, selected_columns = load_predicted_data()
 
-st.dataframe(returns[selected_columns])
-
 strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
 strategy['month_invest'] = pd.to_datetime(strategy['month_invest']).dt.date
 
@@ -104,6 +102,7 @@ for col in stocklist:
     printing_results.loc[col, 'total_investment'] = filtered_investment[filtered_investment[col] > 0][col].sum()
     printing_results.loc[col, 'total_return'] = filtered_investment[col+'_cumulative_sum'].sum()
     # printing_results.loc[col, 'market_results'] = returns[search_dictio.get(col).upper()].prod() - 1
+    st.dataframe(returns[search_dictio.get(col).upper()])
 printing_results['strategy_results'] = printing_results['total_return'] / printing_results['total_investment']
 
 results = results.rename(columns={'Unnamed: 0': 'companies'})
