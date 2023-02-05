@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
 from collections import Counter
+import nltk
 from nltk.corpus import stopwords
 from PIL import Image
 
@@ -18,7 +19,7 @@ TWEETS_PATH = [
     "./data/data_cleaned/webscraped_FMC_CORP/part-00000-ea27d81f-27be-4e5a-9cc2-88ccb53607a7-c000.csv",
     "./data/data_cleaned/webscraped_WEYERHAEUSER_CO/part-00000-5305ef13-248d-49c3-a77a-ae3f402be90c-c000.csv",
 ]
-
+nltk.download('stopwords')
 # Layout
 twt_logo = Image.open('./app/images/twitter-logo.png')
 st.set_page_config(
