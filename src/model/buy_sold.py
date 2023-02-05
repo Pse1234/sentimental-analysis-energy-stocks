@@ -18,6 +18,9 @@ class PortfolioModel:
         self.df["PostDate"] = self.df["PostDate"].astype(str).apply(lambda x: x[:-3])
         self.df["PostDate"] = pandas.to_datetime(self.df["PostDate"])
 
+        # drop rows with NaN values in the "PostDate" column
+        self.df.dropna(subset=["PostDate"], inplace=True)
+    
         # add a column for the year and month
         self.df["year"] = self.df["PostDate"].dt.year
         self.df["month"] = self.df["PostDate"].dt.month
@@ -186,6 +189,7 @@ class PortfolioModel:
         
         self.printing_results.to_csv("./../../data/data_model/results.csv")
         self.shortlongdf.to_csv("./../../data/data_model/todo.csv")
+        print(self.shortlongdf)
 
     def launch(self):
         # reading returns and analyse data NLP
