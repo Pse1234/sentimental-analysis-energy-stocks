@@ -147,7 +147,10 @@ if len(options)>0:
 else:
     st.warning("Please select at least one stock to see the metrics.")
 
-st.write("You are maybe wondering when and how much do you have to invest. Then look at the next dataframe:\n The columns stock are the stock of stocks that you have to have at t\nThe non-'stock' columns are between -1 and 1 and indicate the proportion of stocks to buy. \nWe are based on a unitary strategy where 1 represents to buy a full stock 0.5 a half of the stock. You can multiply this by the number of stocks that you wanna buy or by your budget.")
+st.write("You are maybe wondering when and how much do you have to invest. Then look at the next dataframe:")
+st.write("The columns stock are the stock of stocks that you have to have at t")
+st.write("The non-'stock' columns are between -1 and 1 and indicate the proportion of stocks to buy.")
+st.write("We are based on a unitary strategy where 1 represents to buy a full stock 0.5 a half of the stock. You can multiply this by the number of stocks that you wanna buy or by your budget.")
 
 filtered_investment = filtered_investment.rename(columns=lambda x: x.replace('_cumulative_sum', ' stock') if x.endswith('_cumulative_sum') else x)
 st.dataframe(filtered_investment)
