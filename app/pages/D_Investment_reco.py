@@ -102,9 +102,10 @@ for col in stocklist:
     printing_results.loc[col, 'total_investment'] = filtered_investment[filtered_investment[col] > 0][col].sum()
     printing_results.loc[col, 'total_return'] = filtered_investment[col+'_cumulative_sum'].sum()
     # printing_results.loc[col, 'market_results'] = returns[search_dictio.get(col).upper()].prod() - 1
-    st.write(returns[search_dictio.get(col).upper()].prod())
+    st.write(returns[search_dictio.get(col).upper()])
 printing_results['strategy_results'] = printing_results['total_return'] / printing_results['total_investment']
 
+st.write(returns[selected_columns].dtypes)
 results = results.rename(columns={'Unnamed: 0': 'companies'})
 results.fillna(0, inplace=True)
 selected_stocks = results['companies'].isin(options)
