@@ -15,7 +15,7 @@ st.header("Long or Short stocks")
 def load_predicted_data():
     results = pd.read_csv("./data/data_model/results.csv",)
     strategy = pd.read_csv("./data/data_model/todo.csv",)
-    returns = pd.read_pickle("./data/stocks_data.pkl",)
+    returns = pd.read_csv("./data/stocks_data.csv",)
     returns = returns.rename(columns=returns.iloc[0])
     returns = returns.iloc[2:]
     upercase = lambda x: str(x).upper()
