@@ -147,7 +147,7 @@ if len(options)>0:
 else:
     st.warning("Please select at least one stock to see the metrics.")
 
-st.write("You might be wondering about the timing and amount of your investment. In the next dataframe, you will find answers to those questions. The 'stock' columns indicate the stock of stocks that should be held at a certain time. The columns that are not labeled as "stock" contain values between -1 and 1 and represent the proportion of stocks that should be purchased. Our strategy is based on a unitary approach, where a value of 1 indicates the purchase of a full stock, and 0.5 represents the purchase of half of the stock. These proportions can be multiplied by the number of stocks you want to purchase or by your budget, giving you complete control over your investment decisions.")
+st.write("You might be wondering about the timing and amount of your investment. In the next dataframe, you will find answers to those questions. The 'stock' columns indicate the stock of stocks that should be held at a certain time. The columns that are not labeled as 'stock' contain values between -1 and 1 and represent the proportion of stocks that should be purchased. Our strategy is based on a unitary approach, where a value of 1 indicates the purchase of a full stock, and 0.5 represents the purchase of half of the stock. These proportions can be multiplied by the number of stocks you want to purchase or by your budget, giving you complete control over your investment decisions.")
 
 filtered_investment = filtered_investment.rename(columns=lambda x: x.replace('_cumulative_sum', ' stock') if x.endswith('_cumulative_sum') else x)
 st.dataframe(filtered_investment)
