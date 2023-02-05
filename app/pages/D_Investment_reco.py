@@ -42,7 +42,7 @@ def load_predicted_data():
     return strategy, returns, selected_columns
 
 strategy, returns, selected_columns = load_predicted_data()
-
+st.write(selected_columns)
 st.dataframe(returns)
 st.dataframe(strategy)
 strategy = strategy.rename(columns={'Unnamed: 0': 'month_invest'})
