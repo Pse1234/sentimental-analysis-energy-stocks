@@ -57,6 +57,7 @@ def load_data():
         for filename in filenames:
             if filename.endswith('.csv'):
                 file_path = os.path.join(dirpath, filename)
+                print(file_path)
                 company_name = file_path.split('/')[-2].split('_')[-2:]
                 company_name = ' '.join(company_name).upper()
                 df = pd.read_csv(file_path)
