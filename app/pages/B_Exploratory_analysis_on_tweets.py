@@ -78,7 +78,6 @@ def load_data():
 
 returns, tweets = load_data()
 
-st.write(tweets.dtypes)
 stocklist = [
     "BP PLC",
     "FMC CORP",
@@ -117,6 +116,7 @@ options = st.multiselect(
     max_selections=3,
 )
 
+tweets["PostDate"] = pd.to_datetime(tweets["PostDate"])
 min_date = tweets["PostDate"].min()
 max_date = tweets["PostDate"].max()
 
