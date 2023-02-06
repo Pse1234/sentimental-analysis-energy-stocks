@@ -61,9 +61,9 @@ def load_data():
     # we add altagas webscrapped data
     altagas = pd.read_csv(TWEETS_PATH[3])
     altagas["company"] = "ALTAGAS LTD"
-    # we add bhp webscrapped data
-    bhp = pd.read_csv(TWEETS_PATH[4])
-    bhp["company"] = "BHP GROUP LTD-SPON ADR"
+    # # we add bhp webscrapped data
+    # bhp = pd.read_csv(TWEETS_PATH[4])
+    # bhp["company"] = "BHP GROUP LTD-SPON ADR"
     # we add inter_paper webscrapped data
     # inter_paper = pd.read_csv(TWEETS_PATH[5])
     # inter_paper["company"] = "INTERNATIONAL PAPER CO"
@@ -77,7 +77,7 @@ def load_data():
     # wilmar = pd.read_csv(TWEETS_PATH[7])
     # wilmar["company"] = "WILMAR INTERNATIONAL LTD"
 
-    tweets = pd.concat([fmc_tweets, wy_tweets, bp_tweets, altagas, bhp])# inter_paper, syp, stora, wilmar])
+    tweets = pd.concat([fmc_tweets, wy_tweets, bp_tweets, altagas])# inter_paper, syp, stora, wilmar])
     tweets["PostDate"] = pd.to_datetime(tweets["PostDate"]).dt.date
     # we add a column with the length of each tweet
     tweets["tweet_length"] = tweets["TweetText"].apply(
@@ -94,7 +94,7 @@ stocklist = [
     "FMC CORP",
     "WEYERHAEUSER CO",
     "ALTAGAS LTD",
-    "BHP GROUP LTD-SPON ADR",
+    # "BHP GROUP LTD-SPON ADR",
     # "INTERNATIONAL PAPER CO",
     # "S&P 500 ENERGY INDEX",
     # "STORA ENSO OYJ-R SHS",
@@ -106,7 +106,7 @@ df_columns_list = [
     "FMC US Equity",
     "WY US Equity",
     "ALA CT Equity",
-    "BHP US Equity",
+    # "BHP US Equity",
     # "IP US Equity",
     # "S5ENRS Index",
     # "STERV FH Equity",
