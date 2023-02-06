@@ -95,7 +95,7 @@ stocklist = [
     "FMC CORP",
     "WEYERHAEUSER CO",
     "ALTAGAS LTD",
-    "BHP GROUP",
+    "BHP GROUP LTD-SPON ADR",
     # "INTERNATIONAL PAPER CO",
     # "S&P 500 ENERGY INDEX",
     # "STORA ENSO OYJ-R SHS",
