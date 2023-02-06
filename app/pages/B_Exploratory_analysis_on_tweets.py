@@ -116,7 +116,7 @@ options = st.multiselect(
     max_selections=3,
 )
 
-tweets["PostDate"] = pd.to_datetime(tweets["PostDate"])
+tweets["PostDate"] = pd.to_datetime(tweets["PostDate"]).dt.date
 min_date = tweets["PostDate"].min()
 max_date = tweets["PostDate"].max()
 
