@@ -87,8 +87,9 @@ def load_data():
     )
     return returns, tweets
 
-
 returns, tweets = load_data()
+
+st.dataframe(tweets)
 
 stocklist = [
     "BP PLC",
