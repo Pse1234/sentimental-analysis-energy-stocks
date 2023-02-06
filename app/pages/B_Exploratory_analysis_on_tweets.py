@@ -9,6 +9,7 @@ from collections import Counter
 import nltk
 from nltk.corpus import stopwords
 from PIL import Image
+import os
 
 
 # Global Variables
