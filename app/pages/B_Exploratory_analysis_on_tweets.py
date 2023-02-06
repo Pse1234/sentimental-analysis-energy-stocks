@@ -124,6 +124,7 @@ options = st.multiselect(
     options=stocklist,
     default=None,
     key="macro_options",
+    max_selections=3,
 )
 
 min_date = tweets["PostDate"].min()
