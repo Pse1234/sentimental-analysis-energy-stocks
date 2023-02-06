@@ -65,8 +65,8 @@ def load_data():
     bhp = pd.read_csv(TWEETS_PATH[4])
     bhp["company"] = "BHP GROUP LTD-SPON ADR"
     # we add inter_paper webscrapped data
-    inter_paper = pd.read_csv(TWEETS_PATH[5])
-    inter_paper["company"] = "INTERNATIONAL PAPER CO"
+    # inter_paper = pd.read_csv(TWEETS_PATH[5])
+    # inter_paper["company"] = "INTERNATIONAL PAPER CO"
     # # we add syp webscrapped data
     # syp = pd.read_csv(TWEETS_PATH[8])
     # syp["company"] = "S&P 500 ENERGY INDEX"
