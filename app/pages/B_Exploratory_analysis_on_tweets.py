@@ -53,7 +53,7 @@ def load_data():
     # we add fmc webscrapped data
 
     dfs = [] 
-    for dirpath, dirnames, filenames in os.walk("./../../data/data_cleaned/"):
+    for dirpath, dirnames, filenames in os.walk("./data/data_cleaned/"):
         for filename in filenames:
             if filename.endswith('.csv'):
                 file_path = os.path.join(dirpath, filename)
@@ -61,22 +61,22 @@ def load_data():
                 company_name = file_path.split('/')[-2].split('_')[-2:]
                 company_name = ' '.join(company_name).upper()
                 st.write(company_name)
-                # df = pd.read_csv(file_path)
-                # df['company'] = company_name
-                # dfs.append(df)
+                df = pd.read_csv(file_path)
+                df['company'] = company_name
+                dfs.append(df)
 
-    # df_final = pd.concat(dfs, ignore_index=True)
+    df_final = pd.concat(dfs, ignore_index=True)
 
-    # df_final["PostDate"] = pd.to_datetime(df_final["PostDate"]).dt.date
-    # # we add a column with the length of each tweet
-    # df_final["tweet_length"] = df_final["TweetText"].apply(
-    #     lambda x: len(x.split()))
-    # df_final["avg_word_length"] = df_final["TweetText"].apply(
-    #     lambda x: sum(len(word) for word in x.split()) / len(x.split())
-    # )
-    return returns#, df_final
+    df_final["PostDate"] = pd.to_datetime(df_final["PostDate"]).dt.date
+    # we add a column with the length of each tweet
+    df_final["tweet_length"] = df_final["TweetText"].apply(
+        lambda x: len(x.split()))
+    df_final["avg_word_length"] = df_final["TweetText"].apply(
+        lambda x: sum(len(word) for word in x.split()) / len(x.split())
+    )
+    return returns, df_final
 
-returns = load_data()
+returns, tweets = load_data()
 
 stocklist = [
     "BP PLC",
