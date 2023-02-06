@@ -20,7 +20,7 @@ TWEETS_PATH = [
     "./data/data_cleaned/webscraped_WEYERHAEUSER_CO/part-00000-5305ef13-248d-49c3-a77a-ae3f402be90c-c000.csv",
     "./data/data_cleaned/webscraped_ALTAGAS_LTD/part-00000-3421db26-ad9d-4523-a3dc-8c280f59d6f6-c000.csv",
     "./data/data_cleaned/webscraped_BHP_GROUP/part-00000-cf4ae556-1c5b-4645-890e-822a2fbe66ef-c000.csv",
-    "./data/data_cleaned/webscraped_INTERNATIONAL_PAPER_CO/part-00000-d86fb744-c8ac-41a3-ad2b-6706f75f5abd-c000.csv",
+    # "./data/data_cleaned/webscraped_INTERNATIONAL_PAPER_CO/part-00000-d86fb744-c8ac-41a3-ad2b-6706f75f5abd-c000.csv",
     # "./data/data_cleaned/webscraped_STORA_ENSO/part-00000-d8bcad1c-da20-44e1-857c-50bbfd37d66b-c000.csv",
     # "./data/data_cleaned/webscraped_WILMAR_INTERNATIONAL_LTD/part-00000-4ab531e0-1dbd-46e2-a9d5-6102930b494f-c000.csv",
     # "./data/data_cleaned/webscraped_S&P_500_ENERGY_INDEX/part-00000-30e199c7-87e1-4788-81bb-39b48a1df96e-c000.csv",
@@ -77,7 +77,7 @@ def load_data():
     # wilmar = pd.read_csv(TWEETS_PATH[7])
     # wilmar["company"] = "WILMAR INTERNATIONAL LTD"
 
-    tweets = pd.concat([fmc_tweets, wy_tweets, bp_tweets, altagas, bhp, inter_paper])#, altagas, bhp, inter_paper, syp, stora, wilmar])
+    tweets = pd.concat([fmc_tweets, wy_tweets, bp_tweets, altagas, bhp])# inter_paper, syp, stora, wilmar])
     tweets["PostDate"] = pd.to_datetime(tweets["PostDate"]).dt.date
     # we add a column with the length of each tweet
     tweets["tweet_length"] = tweets["TweetText"].apply(
@@ -95,7 +95,7 @@ stocklist = [
     "WEYERHAEUSER CO",
     "ALTAGAS LTD",
     "BHP GROUP LTD-SPON ADR",
-    "INTERNATIONAL PAPER CO",
+    # "INTERNATIONAL PAPER CO",
     # "S&P 500 ENERGY INDEX",
     # "STORA ENSO OYJ-R SHS",
     # "WILMAR INTERNATIONAL LTD",
@@ -107,7 +107,7 @@ df_columns_list = [
     "WY US Equity",
     "ALA CT Equity",
     "BHP US Equity",
-    "IP US Equity",
+    # "IP US Equity",
     # "S5ENRS Index",
     # "STERV FH Equity",
     # "WIL SP Equity",
