@@ -50,42 +50,28 @@ def load_data():
     returns.drop(columns="DATE1", inplace=True)
     returns[DATE_COLUMN] = pd.to_datetime(returns[DATE_COLUMN]).dt.date
     # we add fmc webscrapped data
-    fmc_tweets = pd.read_csv(TWEETS_PATH[0])
-    fmc_tweets["company"] = "FMC CORP"
-    # we add wy webscrapped data
-    wy_tweets = pd.read_csv(TWEETS_PATH[1])
-    wy_tweets["company"] = "WEYERHAEUSER CO"
-    # we add bp webscrapped data
-    bp_tweets = pd.read_csv(TWEETS_PATH[2])
-    bp_tweets["company"] = "BP PLC"
-    # we add altagas webscrapped data
-    altagas = pd.read_csv(TWEETS_PATH[3])
-    altagas["company"] = "ALTAGAS LTD"
-    # # we add bhp webscrapped data
-    # bhp = pd.read_csv(TWEETS_PATH[4])
-    # bhp["company"] = "BHP GROUP LTD-SPON ADR"
-    # we add inter_paper webscrapped data
-    # inter_paper = pd.read_csv(TWEETS_PATH[5])
-    # inter_paper["company"] = "INTERNATIONAL PAPER CO"
-    # # we add syp webscrapped data
-    # syp = pd.read_csv(TWEETS_PATH[8])
-    # syp["company"] = "S&P 500 ENERGY INDEX"
-    # # we add syp webscrapped data
-    # stora = pd.read_csv(TWEETS_PATH[6])
-    # stora["company"] = "STORA ENSO OYJ-R SHS"
-    # # we add syp webscrapped data
-    # wilmar = pd.read_csv(TWEETS_PATH[7])
-    # wilmar["company"] = "WILMAR INTERNATIONAL LTD"
 
-    tweets = pd.concat([fmc_tweets, wy_tweets, bp_tweets, altagas])# inter_paper, syp, stora, wilmar])
-    tweets["PostDate"] = pd.to_datetime(tweets["PostDate"]).dt.date
+    dfs = [] 
+    for dirpath, dirnames, filenames in os.walk("./../../data/data_cleaned/"):
+        for filename in filenames:
+            if filename.endswith('.csv'):
+                file_path = os.path.join(dirpath, filename)
+                company_name = file_path.split('/')[-2].split('_')[-2:]
+                company_name = ' '.join(company_name).upper()
+                df = pd.read_csv(file_path)
+                df['company'] = company_name
+                dfs.append(df)
+
+    df_final = pd.concat(dfs, ignore_index=True)
+
+    df_final["PostDate"] = pd.to_datetime(df_final["PostDate"]).dt.date
     # we add a column with the length of each tweet
-    tweets["tweet_length"] = tweets["TweetText"].apply(
+    df_final["tweet_length"] = df_final["TweetText"].apply(
         lambda x: len(x.split()))
-    tweets["avg_word_length"] = tweets["TweetText"].apply(
+    df_final["avg_word_length"] = df_final["TweetText"].apply(
         lambda x: sum(len(word) for word in x.split()) / len(x.split())
     )
-    return returns, tweets
+    return returns, df_final
 
 returns, tweets = load_data()
 
