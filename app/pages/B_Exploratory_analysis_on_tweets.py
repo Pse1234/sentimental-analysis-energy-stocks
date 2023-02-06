@@ -76,7 +76,7 @@ def load_data():
     # )
     return returns#, df_final
 
-returns, tweets = load_data()
+returns = load_data()
 
 stocklist = [
     "BP PLC",
