@@ -19,7 +19,7 @@ TWEETS_PATH = [
     "./data/data_cleaned/webscraped_FMC_CORP/part-00000-ea27d81f-27be-4e5a-9cc2-88ccb53607a7-c000.csv",
     "./data/data_cleaned/webscraped_WEYERHAEUSER_CO/part-00000-5305ef13-248d-49c3-a77a-ae3f402be90c-c000.csv",
     "./data/data_cleaned/webscraped_ALTAGAS_LTD/part-00000-3421db26-ad9d-4523-a3dc-8c280f59d6f6-c000.csv",
-    # "./data/data_cleaned/webscraped_BHP_GROUP/part-00000-cf4ae556-1c5b-4645-890e-822a2fbe66ef-c000.csv",
+    "./data/data_cleaned/webscraped_BHP_GROUP/part-00000-cf4ae556-1c5b-4645-890e-822a2fbe66ef-c000.csv",
     # "./data/data_cleaned/webscraped_INTERNATIONAL_PAPER_CO/part-00000-d86fb744-c8ac-41a3-ad2b-6706f75f5abd-c000.csv",
     # "./data/data_cleaned/webscraped_STORA_ENSO/part-00000-d8bcad1c-da20-44e1-857c-50bbfd37d66b-c000.csv",
     # "./data/data_cleaned/webscraped_WILMAR_INTERNATIONAL_LTD/part-00000-4ab531e0-1dbd-46e2-a9d5-6102930b494f-c000.csv",
