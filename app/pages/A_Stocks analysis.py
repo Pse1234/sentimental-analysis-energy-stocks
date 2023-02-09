@@ -167,9 +167,9 @@ for i, k in enumerate(df_columns_list):
 container = st.sidebar.container()
 all = st.sidebar.checkbox("Select all")
 if all:
-    selected_options = container.multiselect("Select one or more options:", stocklist, stocklist)
+    stocks_selected = container.multiselect("Select one or more options:", stocklist, stocklist)
 else:
-    selected_options =  container.multiselect("Select one or more options:", stocklist)
+    stocks_selected =  container.multiselect("Select one or more options:", stocklist)
 
 # # -- Choose stocks from stockslists
 # stocks_selected = st.sidebar.multiselect("Stock list", stocklist)
