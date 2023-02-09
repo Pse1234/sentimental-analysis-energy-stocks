@@ -6,7 +6,7 @@ from PIL import Image
 # Layout
 twt_logo = Image.open('app/images/twitter-logo.png')
 st.set_page_config(page_title="Stock Analysis", page_icon=twt_logo, layout="wide")
-st.title("Stock Analysis based on returns (%)💸")
+st.title("💸💸 Stock Analysis based on returns on % 💸💸")
 
 # Global Variables
 DATE_COLUMN = "DATE"
