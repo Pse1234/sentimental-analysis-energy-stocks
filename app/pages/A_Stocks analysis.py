@@ -164,7 +164,7 @@ for i, k in enumerate(df_columns_list):
     search_dictio[stocklist[i]] = k
 
 
-container = st.sidebar.beta_container()
+container = st.sidebar.container()
 all = st.sidebar.checkbox("Select all")
 if all:
     selected_options = container.multiselect("Select one or more options:", stocklist, stocklist)
