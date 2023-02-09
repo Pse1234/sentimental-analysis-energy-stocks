@@ -44,17 +44,18 @@ stocklist = [
     "WILMAR INTERNATIONAL LTD",
     "TOTALENERGIES SE",
     "UPM-KYMMENE OYJ",
+    "NEWMONT CORP",
+    "EXXON MOBIL CORP",
+    "VALERO ENERGY CORP",
+    "NUCOR CORP",
+    "BARRICK GOLD CORP",
+    "FREEPORT-MCMORAN INC",
+    "CONOCOPHILLIPS",
+    "ARCHER-DANIELS-MIDLAND CO",
+    "POSCO HOLDINGS INC -SPON ADR",
 ]
 
-# "NEM US Equity",
-# "XOM US Equity",
-# "VLO US Equity",
-# "NUE US Equity",
-# "ABX CT Equity",
-# "FCX US Equity",
-# "COP US Equity",
-# "ADM US Equity",
-# "PKX US Equity",
+
 # "TECK/B CT Equity",
 # "RIO US Equity",
 # "MNDI LN Equity",
@@ -107,6 +108,15 @@ df_columns_list = [
     "WIL SP Equity",
     "TTE FP Equity",
     "UPM FH Equity",
+    "NEM US Equity",
+    "XOM US Equity",
+    "VLO US Equity",
+    "NUE US Equity",
+    "ABX CT Equity",
+    "FCX US Equity",
+    "COP US Equity",
+    "ADM US Equity",
+    "PKX US Equity",
 ]
 
 search_dictio = {}
