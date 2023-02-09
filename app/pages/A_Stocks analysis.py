@@ -36,12 +36,26 @@ stocklist = [
     "BP PLC",
     "FMC CORP",
     "WEYERHAEUSER CO",
+    "ALTAGAS LTD",
+    "BHP GROUP",
+    "INTERNATIONAL PAPER CO",
+    "S&P 500 ENERGY INDEX",
+    "STORA ENSO",
+    "WILMAR INTERNATIONAL LTD",
+    "TOTALENERGIES SE",
 ]
 
 df_columns_list = [
     "BP/ LN Equity",
     "FMC US Equity",
     "WY US Equity",
+    "ALA CT Equity",
+    "BHP US Equity",
+    "IP US Equity",
+    "S5ENRS Index",
+    "STERV FH Equity",
+    "WIL SP Equity",
+    "TTE FP Equity",
 ]
 
 search_dictio = {}
