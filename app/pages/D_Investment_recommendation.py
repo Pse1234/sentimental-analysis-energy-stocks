@@ -89,29 +89,20 @@ for i, k in enumerate(df_columns_list):
 container = st.sidebar.container()
 all = st.sidebar.checkbox("Select all")
 if all:
-    options = container.multiselect("Select one or more options:", stocklist, stocklist)
+    options = container.multiselect("**Select one or more options:**", stocklist, stocklist)
 else:
-    options =  container.multiselect("Select one or more options:", stocklist)
+    options =  container.multiselect("**Select one or more options:**", stocklist)
 
 min_date = strategy["month_invest"].min()
 max_date = strategy["month_invest"].max()
 
-# filter start date
-start_date = st.date_input(
-    "**Select a start date:**",
-    min_value=min_date,
-    max_value=max_date,
-    value=min_date,
-    key="start_date",
+start_date = st.sidebar.date_input(
+    "**Start date**:", min_value=min_date, max_value=max_date, value=min_date, key="start_date",
 )
-# filter end date
-end_date = st.date_input(
-    "**Select an end date:**",
-    min_value=min_date,
-    max_value=max_date,
-    value=max_date,
-    key="end_date",
+end_date = st.sidebar.date_input(
+    "**End date:**", min_value=min_date, max_value=max_date, value=max_date, key="end_date",
 )
+
 
 condition1 = start_date <= strategy["month_invest"]
 condition2 = strategy["month_invest"] <= end_date
