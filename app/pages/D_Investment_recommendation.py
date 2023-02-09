@@ -103,7 +103,6 @@ end_date = st.sidebar.date_input(
     "**End date:**", min_value=min_date, max_value=max_date, value=max_date, key="end_date",
 )
 
-
 condition1 = start_date <= strategy["month_invest"]
 condition2 = strategy["month_invest"] <= end_date
 mask = condition1 & condition2
