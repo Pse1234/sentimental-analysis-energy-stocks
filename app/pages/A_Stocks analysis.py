@@ -71,7 +71,6 @@ stocklist = [
     "ALCOA CORP",
     "ARCELORMITTAL",
     "NUTRIEN LTD",
-    "NUTRIEN LTD",
     "DOW INC",
     "CORTEVA INC",
     "OCCIDENTAL PETROLEUM CORP",
