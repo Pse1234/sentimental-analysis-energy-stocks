@@ -8,7 +8,7 @@ st.set_page_config(
     page_title="Sentimental analysis", page_icon=twt_logo, layout="wide"
 )
 
-st.title("Investment Recommendation for the selected period")
+st.title("Investment Recommendation for a selected period")
 st.header("Long or Short stocks")
 
 @st.cache(suppress_st_warning=True)
