@@ -77,13 +77,21 @@ for i, k in enumerate(df_columns_list):
     search_dictio[stocklist[i]] = k
 
 
-# Filter the stocks
-options = st.multiselect(
-    "**Select your desired stocks:**",
-    options=stocklist,
-    default=None,
-    key="macro_options",
-)
+# # Filter the stocks
+# options = st.multiselect(
+#     "**Select your desired stocks:**",
+#     options=stocklist,
+#     default=None,
+#     key="macro_options",
+# )
+
+# -- Choose stocks from stockslists
+container = st.sidebar.container()
+all = st.sidebar.checkbox("Select all")
+if all:
+    options = container.multiselect("Select one or more options:", stocklist, stocklist)
+else:
+    options =  container.multiselect("Select one or more options:", stocklist)
 
 min_date = strategy["month_invest"].min()
 max_date = strategy["month_invest"].max()

@@ -163,7 +163,7 @@ search_dictio = {}
 for i, k in enumerate(df_columns_list):
     search_dictio[stocklist[i]] = k
 
-
+# -- Choose stocks from stockslists
 container = st.sidebar.container()
 all = st.sidebar.checkbox("Select all")
 if all:
@@ -171,8 +171,7 @@ if all:
 else:
     stocks_selected =  container.multiselect("Select one or more options:", stocklist)
 
-# # -- Choose stocks from stockslists
-# stocks_selected = st.sidebar.multiselect("Stock list", stocklist)
+
 
 stocks = []
 stocks.append("DATE")
