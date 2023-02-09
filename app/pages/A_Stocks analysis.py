@@ -171,8 +171,6 @@ if all:
 else:
     stocks_selected =  container.multiselect("Select one or more options:", stocklist)
 
-
-
 stocks = []
 stocks.append("DATE")
 for i in stocks_selected:
