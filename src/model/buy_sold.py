@@ -158,6 +158,7 @@ class PortfolioModel:
             "S&P 500 ENERGY INDEX",
             "STORA ENSO",
             "WILMAR INTERNATIONAL LTD",
+            "TOTALENERGIES SE",
         ]
 
         self.df_columns_list = [
@@ -170,6 +171,7 @@ class PortfolioModel:
             "S5ENRS Index",
             "STERV FH Equity",
             "WIL SP Equity",
+            "TTE FP Equity",
         ]
 
         self.search_dictio = {}
