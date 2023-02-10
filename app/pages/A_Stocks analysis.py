@@ -2,6 +2,8 @@
 import streamlit as st
 import pandas as pd
 from PIL import Image
+import plotly as plt
+import seaborn as sns
 
 # Layout
 twt_logo = Image.open('app/images/twitter-logo.png')
@@ -210,6 +212,18 @@ st.dataframe(filtered_df[stocks])
 st.line_chart(
     data=filtered_df, x="DATE", y=stocks, width=0, height=0, use_container_width=True
 )
+
+def correlations(df):
+    # Increase the size of the heatmap.
+    plt.figure(figsize=(16, 6))
+    # Store heatmap object in a variable to easily access it when you want to include more features (such as title).
+    # Set the range of values to be displayed on the colormap from -1 to 1, and set the annotation to True to display the correlation values on the heatmap.
+    heatmap = sns.heatmap(df.corr(), vmin=-1, vmax=1, annot=True)
+    # Give a title to the heatmap. Pad defines the distance of the title from the top of the heatmap.
+    heatmap.set_title('Correlation Heatmap', fontdict={'fontsize':12}, pad=12)
+    st.pyplot(heatmap)
+
+correlations(filtered_df)
 
 # -- Aknowledgments
 c1, c2 = st.columns(2)
