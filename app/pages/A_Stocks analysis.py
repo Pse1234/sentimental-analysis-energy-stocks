@@ -225,8 +225,8 @@ st.line_chart(
 
 # correlations(filtered_df)
 
-st.write(sns.heatmap(filtered_df.corr(),annot=True))
-st.pyplot()
+# st.write(sns.heatmap(filtered_df.corr(),annot=True))
+# st.pyplot()
 
 # -- Aknowledgments
 c1, c2 = st.columns(2)
