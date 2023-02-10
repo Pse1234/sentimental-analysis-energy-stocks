@@ -124,15 +124,6 @@ for i, k in enumerate(df_columns_list):
     search_dictio[stocklist[i]] = k
 
 
-# Filter the stocks
-options = st.multiselect(
-    "**Select your desired blockchains:**",
-    options=stocklist,
-    default=None,
-    key="macro_options",
-    max_selections=3,
-)
-
 # -- Choose stocks from stockslists
 container = st.sidebar.container()
 all = st.sidebar.checkbox("Select all")
