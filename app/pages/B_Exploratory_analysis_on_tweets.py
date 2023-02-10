@@ -137,7 +137,7 @@ options = st.multiselect(
 container = st.sidebar.container()
 all = st.sidebar.checkbox("Select all")
 if all:
-    options = container.multiselect("**Select one or more options:**", stocklist, stocklist[0:2])
+    options = container.multiselect("**Select one or more options:**", stocklist, stocklist[:3])
 else:
     options =  container.multiselect("**Select one or more options:**", stocklist, max_selections=3)
 
