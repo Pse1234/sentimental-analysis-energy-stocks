@@ -2,7 +2,7 @@
 import streamlit as st
 import pandas as pd
 from PIL import Image
-import plotly as plt
+import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Layout
