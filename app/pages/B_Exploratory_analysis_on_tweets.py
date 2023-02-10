@@ -133,6 +133,14 @@ options = st.multiselect(
     max_selections=3,
 )
 
+# -- Choose stocks from stockslists
+container = st.sidebar.container()
+all = st.sidebar.checkbox("Select all")
+if all:
+    options = container.multiselect("**Select one or more options:**", stocklist, stocklist)
+else:
+    options =  container.multiselect("**Select one or more options:**", stocklist, max_selections=3)
+
 min_date = tweets["PostDate"].min()
 max_date = tweets["PostDate"].max()
 
