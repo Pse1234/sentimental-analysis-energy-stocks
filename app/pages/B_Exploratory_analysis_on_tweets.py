@@ -128,9 +128,9 @@ for i, k in enumerate(df_columns_list):
 container = st.sidebar.container()
 all = st.sidebar.checkbox("Select all")
 if all:
-    options = container.multiselect("**Select one or more options:**", stocklist, stocklist[:3])
+    options = container.multiselect("**Select one or more stocks:**", stocklist, stocklist[:3])
 else:
-    options =  container.multiselect("**Select one or more options:**", stocklist, max_selections=3)
+    options =  container.multiselect("**Select one or more stocks:**", stocklist, max_selections=3)
 
 min_date = tweets["PostDate"].min()
 max_date = tweets["PostDate"].max()
