@@ -79,21 +79,11 @@ else:
 min_date = tweets["PostDate"].min()
 max_date = tweets["PostDate"].max()
 
-# filter start date
-start_date = st.date_input(
-    "**Select a start date:**",
-    min_value=min_date,
-    max_value=max_date,
-    value=min_date,
-    key="start_date",
+start_date = st.sidebar.date_input(
+    "**Start date**:", min_value=min_date, max_value=max_date, value=min_date, key="start_date",
 )
-# filter end date
-end_date = st.date_input(
-    "**Select an end date:**",
-    min_value=min_date,
-    max_value=max_date,
-    value=max_date,
-    key="end_date",
+end_date = st.sidebar.date_input(
+    "**End date:**", min_value=min_date, max_value=max_date, value=max_date, key="end_date",
 )
 
 condition1 = start_date <= tweets["PostDate"]
