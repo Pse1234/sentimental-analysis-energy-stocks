@@ -215,6 +215,10 @@ if len(stocks) > 1:
     # ---- Plot
     if st.checkbox("Show returns dataframe by month"):
         st.dataframe(filtered_df[stocks])
+
+    if st.checkbox("Show summary"):
+        st.dataframe(filtered_df[stocks].describe().T)
+
     st.title("Cumulate returns")
     st.line_chart(
         data=filtered_df, x="DATE", y=stocks, width=0, height=0, use_container_width=True
