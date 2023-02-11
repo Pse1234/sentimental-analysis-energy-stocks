@@ -216,6 +216,7 @@ if len(stocks) > 1:
     if st.checkbox("Show returns dataframe by month"):
         st.dataframe(filtered_df[stocks])
 
+    filtered_df[stocks].drop("DATE") = filtered_df[stocks].drop("DATE").astype(int)
     if st.checkbox("Show summary"):
         st.dataframe(filtered_df[stocks].describe().T)
 
