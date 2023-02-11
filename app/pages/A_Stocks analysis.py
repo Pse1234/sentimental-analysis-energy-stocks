@@ -217,7 +217,7 @@ if len(stocks) > 1:
         st.dataframe(filtered_df[stocks])
 
     if st.checkbox("Show summary"):
-        st.dataframe(filtered_df[stocks].describe().T)
+        st.dataframe(stocks_df.describe().T)
 
     st.title("Cumulate returns")
     st.line_chart(
