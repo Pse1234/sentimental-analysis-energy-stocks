@@ -248,9 +248,8 @@ if choice == 'EDA':
 
 elif choice == 'Plots':
     st.subheader("Data Visualization")
-    data = st.file_uploader("Upload a Dataset", type=["csv", "txt", "xlsx"])
-    if data is not None:
-        df = pd.read_csv(data)
+    if stocks_df.shape[1]<1:
+        df = stocks_df.copy()
         st.dataframe(df.head())
 
 
