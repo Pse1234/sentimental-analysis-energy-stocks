@@ -199,7 +199,7 @@ condition2 = data[DATE_COLUMN] <= end_date
 mask = condition1 & condition2
 filtered_df = data.loc[mask, :]
 stocks_df = filtered_df[stocks]
-
+stocks_df.drop("DATE") = stocks_df.drop("DATE").astype(int)
 
 # # ----- Reporting
 if len(stocks) > 1:
@@ -216,7 +216,6 @@ if len(stocks) > 1:
     if st.checkbox("Show returns dataframe by month"):
         st.dataframe(filtered_df[stocks])
 
-    filtered_df[stocks].drop("DATE") = filtered_df[stocks].drop("DATE").astype(int)
     if st.checkbox("Show summary"):
         st.dataframe(filtered_df[stocks].describe().T)
 
