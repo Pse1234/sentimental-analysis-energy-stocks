@@ -198,8 +198,7 @@ filtered_df = data.loc[mask, :]
 stocks_df = filtered_df[stocks]
 
 # # ----- Reporting
-st.write(stocks)
-if len(stocks) > 0:
+if len(stocks) > 1:
     m1, m2, m3, m4, m5 = st.columns((1, 1, 1, 1, 1))
 
     total_returns = stocks_df.drop(columns=DATE_COLUMN).sum(axis=1)
