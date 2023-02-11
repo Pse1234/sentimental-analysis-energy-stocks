@@ -230,7 +230,7 @@ if len(stocks) > 1:
     )
 
     fig, ax = plt.subplots()
-    ax.hist(stocks_df, bins=20)
+    ax.hist(stocks_df, bins=20, figsize=(20,20),edgecolor='black',color='pink')
     st.pyplot(fig)
 
     # def correlations(df):
