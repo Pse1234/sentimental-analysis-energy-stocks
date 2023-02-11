@@ -217,7 +217,12 @@ if len(stocks) > 1:
         st.dataframe(stocks_df)
 
     if st.checkbox("Show summary"):
-        st.dataframe(stocks_df.describe().T)
+        summary_stats = stocks_df.describe().T
+        skewness = stocks_df.skew()
+        kurtosis = stocks_df.kurt()
+        summary_stats['skewness'] = skewness
+        summary_stats['kurtosis'] = kurtosis
+        st.dataframe(summary_stats)
 
     st.title("Cumulate returns")
     st.line_chart(
