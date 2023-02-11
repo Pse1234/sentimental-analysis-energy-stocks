@@ -198,37 +198,41 @@ filtered_df = data.loc[mask, :]
 stocks_df = filtered_df[stocks]
 
 # # ----- Reporting
-m1, m2, m3, m4, m5 = st.columns((1, 1, 1, 1, 1))
 
-total_returns = stocks_df.drop(columns=DATE_COLUMN).sum(axis=1)
+if len(stocks) > 0:
+    m1, m2, m3, m4, m5 = st.columns((1, 1, 1, 1, 1))
 
-m1.write("")
-m2.metric(label="Number of selected stocks:", value=str(len(stocks) - 1))
-m3.metric(label="Total Returns for Portfolio", value=str(round(sum(total_returns), 1)))
-m1.write("")
+    total_returns = stocks_df.drop(columns=DATE_COLUMN).sum(axis=1)
 
-# ---- Plot
-st.dataframe(filtered_df[stocks])
-st.title("Cumulate returns")
-st.line_chart(
-    data=filtered_df, x="DATE", y=stocks, width=0, height=0, use_container_width=True
-)
+    m1.write("")
+    m2.metric(label="Number of selected stocks:", value=str(len(stocks) - 1))
+    m3.metric(label="Total Returns for Portfolio", value=str(round(sum(total_returns), 1)))
+    m1.write("")
 
-# def correlations(df):
-#     # Increase the size of the heatmap.
-#     plt.figure(figsize=(16, 6))
-#     # Store heatmap object in a variable to easily access it when you want to include more features (such as title).
-#     # Set the range of values to be displayed on the colormap from -1 to 1, and set the annotation to True to display the correlation values on the heatmap.
-#     heatmap = sns.heatmap(df.corr(), vmin=-1, vmax=1, annot=True)
-#     # Give a title to the heatmap. Pad defines the distance of the title from the top of the heatmap.
-#     heatmap.set_title('Correlation Heatmap', fontdict={'fontsize':12}, pad=12)
-#     st.pyplot(heatmap)
+    # ---- Plot
+    st.dataframe(filtered_df[stocks])
+    st.title("Cumulate returns")
+    st.line_chart(
+        data=filtered_df, x="DATE", y=stocks, width=0, height=0, use_container_width=True
+    )
 
-# correlations(filtered_df)
+    # def correlations(df):
+    #     # Increase the size of the heatmap.
+    #     plt.figure(figsize=(16, 6))
+    #     # Store heatmap object in a variable to easily access it when you want to include more features (such as title).
+    #     # Set the range of values to be displayed on the colormap from -1 to 1, and set the annotation to True to display the correlation values on the heatmap.
+    #     heatmap = sns.heatmap(df.corr(), vmin=-1, vmax=1, annot=True)
+    #     # Give a title to the heatmap. Pad defines the distance of the title from the top of the heatmap.
+    #     heatmap.set_title('Correlation Heatmap', fontdict={'fontsize':12}, pad=12)
+    #     st.pyplot(heatmap)
 
-# st.write(sns.heatmap(filtered_df.corr(),annot=True))
-# st.pyplot()
+    # correlations(filtered_df)
 
+    # st.write(sns.heatmap(filtered_df.corr(),annot=True))
+    # st.pyplot()
+
+else:
+    st.warning("Please select at least one stock to see the metrics.")
 # -- Aknowledgments
 c1, c2 = st.columns(2)
 with c1:
