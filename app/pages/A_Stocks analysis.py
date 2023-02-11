@@ -207,41 +207,42 @@ stocks_df = filtered_df[stocks]
 if choice == 'EDA':
     st.subheader("Exploratory Data Analysis")
 
-    st.dataframe(stocks_df.head())
+    if stocks_df.shape[1]>1:
+        st.dataframe(stocks_df.head())
 
-    if st.checkbox("Show Shape"):
-        st.write(stocks_df.shape)
+        if st.checkbox("Show Shape"):
+            st.write(stocks_df.shape)
 
-    if st.checkbox("Show Columns"):
-        all_columns = stocks_df.columns.to_list()
-        st.write(all_columns)
+        if st.checkbox("Show Columns"):
+            all_columns = stocks_df.columns.to_list()
+            st.write(all_columns)
 
-    if st.checkbox("Summary"):
-        st.write(stocks_df.describe())
+        if st.checkbox("Summary"):
+            st.write(stocks_df.describe())
 
-    if st.checkbox("Show Selected Columns"):
-        selected_columns = st.multiselect("Select Columns",all_columns)
-        new_df = stocks_df[selected_columns]
-        st.dataframe(new_df)
+        if st.checkbox("Show Selected Columns"):
+            selected_columns = st.multiselect("Select Columns",all_columns)
+            new_df = stocks_df[selected_columns]
+            st.dataframe(new_df)
 
-    if st.checkbox("Show Value Counts"):
-        st.write(stocks_df.iloc[:,-1].value_counts())
+        if st.checkbox("Show Value Counts"):
+            st.write(stocks_df.iloc[:,-1].value_counts())
 
-    if st.checkbox("Correlation Plot(Matplotlib)"):
-        plt.matshow(stocks_df.corr())
-        st.pyplot()
+        if st.checkbox("Correlation Plot(Matplotlib)"):
+            plt.matshow(stocks_df.corr())
+            st.pyplot()
 
-    if st.checkbox("Correlation Plot(Seaborn)"):
-        st.write(sns.heatmap(stocks_df.corr(),annot=True))
-        st.pyplot()
+        if st.checkbox("Correlation Plot(Seaborn)"):
+            st.write(sns.heatmap(stocks_df.corr(),annot=True))
+            st.pyplot()
 
 
-    if st.checkbox("Pie Plot"):
-        all_columns = stocks_df.columns.to_list()
-        column_to_plot = st.selectbox("Select 1 Column",all_columns)
-        pie_plot = stocks_df[column_to_plot].value_counts().plot.pie(autopct="%1.1f%%")
-        st.write(pie_plot)
-        st.pyplot()
+        if st.checkbox("Pie Plot"):
+            all_columns = stocks_df.columns.to_list()
+            column_to_plot = st.selectbox("Select 1 Column",all_columns)
+            pie_plot = stocks_df[column_to_plot].value_counts().plot.pie(autopct="%1.1f%%")
+            st.write(pie_plot)
+            st.pyplot()
 
 
 
