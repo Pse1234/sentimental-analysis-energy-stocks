@@ -229,6 +229,10 @@ if len(stocks) > 1:
         data=filtered_df, x="DATE", y=stocks, width=0, height=0, use_container_width=True
     )
 
+    fig, ax = plt.subplots()
+    ax.hist(stocks_df, bins=20)
+    st.pyplot(fig)
+
     # def correlations(df):
     #     # Increase the size of the heatmap.
     #     plt.figure(figsize=(16, 6))
