@@ -199,7 +199,7 @@ condition2 = data[DATE_COLUMN] <= end_date
 mask = condition1 & condition2
 filtered_df = data.loc[mask, :]
 stocks_df = filtered_df[stocks]
-stocks_df.drop("DATE", axis=1) = stocks_df.drop("DATE").astype(int)
+stocks_df[stocks_df.columns[1:]] = stocks_df[stocks_df.columns[1:]].astype(int)
 
 # # ----- Reporting
 if len(stocks) > 1:
