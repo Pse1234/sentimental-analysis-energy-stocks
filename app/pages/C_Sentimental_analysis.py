@@ -114,35 +114,36 @@ st.metric(
     value=str(filtered_tweets.shape[0]),
 )
 
-c1, c2, c3, c4 = st.columns(4)
+if len(options) > 1:
+    c1, c2, c3, c4 = st.columns(4)
 
-with c1:
-    st.metric(
-        label=f"Number of tweets bullish tweets:",
-        value=str(filtered_tweets[filtered_tweets["sentiment"] == "Bullish"].shape[0]),
-    )
+    with c1:
+        st.metric(
+            label=f"Number of tweets bullish tweets:",
+            value=str(filtered_tweets[filtered_tweets["sentiment"] == "Bullish"].shape[0]),
+        )
 
-with c2:
-    st.metric(
-        label=f"Number of tweets bearish tweets:",
-        value=str(filtered_tweets[filtered_tweets["sentiment"] == "Bearish"].shape[0]),
-    )
+    with c2:
+        st.metric(
+            label=f"Number of tweets bearish tweets:",
+            value=str(filtered_tweets[filtered_tweets["sentiment"] == "Bearish"].shape[0]),
+        )
 
-with c3:
-    st.metric(
-        label=f"Number of positives tweets:",
-        value=str(
-            filtered_tweets[filtered_tweets["sentiment_base"] == "positive"].shape[0]
-        ),
-    )
+    with c3:
+        st.metric(
+            label=f"Number of positives tweets:",
+            value=str(
+                filtered_tweets[filtered_tweets["sentiment_base"] == "positive"].shape[0]
+            ),
+        )
 
-with c4:
-    st.metric(
-        label=f"Number of negatives tweets:",
-        value=str(
-            filtered_tweets[filtered_tweets["sentiment_base"] == "negative"].shape[0]
-        ),
-    )
+    with c4:
+        st.metric(
+            label=f"Number of negatives tweets:",
+            value=str(
+                filtered_tweets[filtered_tweets["sentiment_base"] == "negative"].shape[0]
+            ),
+        )
 
-st.header(f"Selected tweets for the portfolio:\n {', '.join(options)}")
-st.dataframe(filtered_tweets)
+    st.header(f"Selected tweets for the portfolio:\n {', '.join(options)}")
+    st.dataframe(filtered_tweets)
