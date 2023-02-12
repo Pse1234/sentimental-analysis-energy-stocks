@@ -109,13 +109,14 @@ st.write(
 st.write(
     "Suppose you have a monthly investment limit of 2000 dollars. The strategy is to standardize returns. If all tweets are positive or bullish, you should invest 2000 dollars in stocks for your portfolio. If only 40 percent of tweets are positive, you should invest 2000 x 40 = 800 dollars in stocks for your portfolio."
 )
-st.metric(
-    label=f"Number of tweets for the portfolio:",
-    value=str(filtered_tweets.shape[0]),
-)
 
 if len(options) > 1:
     c1, c2, c3, c4 = st.columns(4)
+
+    st.metric(
+    label=f"Number of tweets for the portfolio:",
+    value=str(filtered_tweets.shape[0]),
+)
 
     with c1:
         st.metric(
