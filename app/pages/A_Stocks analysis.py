@@ -189,9 +189,6 @@ end_date = st.sidebar.date_input(
 )
 st.write("Selected range:", start_date, "to", end_date)
 
-activities = ["EDA","Plots"]	
-choice = st.sidebar.selectbox("Select Activities",activities)
-
 # -- Show data
 # ----- Conditions
 condition1 = start_date <= data[DATE_COLUMN]
