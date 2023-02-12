@@ -110,7 +110,7 @@ st.write(
     "Suppose you have a monthly investment limit of 2000 dollars. The strategy is to standardize returns. If all tweets are positive or bullish, you should invest 2000 dollars in stocks for your portfolio. If only 40 percent of tweets are positive, you should invest 2000 x 40 = 800 dollars in stocks for your portfolio."
 )
 
-if len(options) > 1:
+if len(options) > 0:
     c1, c2, c3, c4 = st.columns(4)
 
     st.metric(
@@ -148,3 +148,6 @@ if len(options) > 1:
 
     st.header(f"Selected tweets for the portfolio:\n {', '.join(options)}")
     st.dataframe(filtered_tweets)
+
+else:
+    st.warning("Please select at least one stock to see the metrics.")
