@@ -213,7 +213,7 @@ if len(stocks) > 1:
     m1.write("")
 
     # ---- Plot
-    if st.checkbox("Show returns dataframe by month"):
+    if st.checkbox("Show returns by month"):
         st.dataframe(stocks_df)
 
     if st.checkbox("Show summary"):
