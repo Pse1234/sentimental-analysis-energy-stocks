@@ -209,7 +209,7 @@ if len(stocks) > 1:
 
     m1.write("")
     m2.metric(label="Number of selected stocks:", value=str(len(stocks) - 1))
-    m3.metric(label="Total Returns for Portfolio", value=str(round(sum(total_returns), 1)))
+    m3.metric(label="Total Returns for Portfolio", value=str(round(sum(total_returns), 1))+"%")
     m1.write("")
 
     # ---- Plot
